@@ -40,11 +40,19 @@ export default function App() {
 		},
 	];
 
+	const QUIZ_STATES = Object.freeze({
+		STARTING: "Starting",
+		PLAYING: "Playing",
+		RESETING: "Reseting"
+	});
+
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
 	const [showScore, setShowScore] = useState(false);
 
 	const [score, setScore] = useState(0);
+
+	const [quizState, setQuizState] = useState(QUIZ_STATES.STARTING);
 
 	const handleAnswerButtonClick = (isCorrect) => {
 
@@ -60,35 +68,43 @@ export default function App() {
 		}
 	}
 
-	const handleResetButtonClick = ()=> {
+	const handleStartButtonClick = () => {
+		setQuizState(QUIZ_STATES.PLAYING);
+	};
+
+	const handleResetButtonClick = () => {
 		setCurrentQuestion(0);
 		setShowScore(false);
 		setScore(0);
+		setQuizState(QUIZ_STATES.STARTING);
 	};
 
 	return (
 		<div className='app'>
-			{/* HINT: replace "false" with logic to display the 
-      score when the user has answered all the questions */}
-			{showScore ? (
+			if ({quizState === QUIZ_STATES.RESETING && showScore}) {
 				<div className='end-section'>
 					<div className='score-section'>You scored {score} out of {questions.length}</div>
 					<button className='reset-button' onClick={handleResetButtonClick}>Reset quiz</button>
 				</div>
-			) : (
+			} else if ({quizState === QUIZ_STATES.PLAYING}) {
 				<>
-					<div className='question-section'>
+				<div className='question-section'>
 						<div className='question-count'>
 							<span>Question {currentQuestion + 1}</span>/{questions.length}
 						</div>
 						<div className='question-text'>{questions[currentQuestion].questionText}</div>
-					</div>
+				</div>
 					<div className='answer-section'>
 						{questions[currentQuestion].answerOptions.map((answerOptions) => 
-						<button onClick={() => handleAnswerButtonClick(answerOptions.isCorrect)}>{answerOptions.answerText}</button> )}
+						<button className='answer-button' onClick={() => handleAnswerButtonClick(answerOptions.isCorrect)}>{answerOptions.answerText}</button> )}
 					</div>
 				</>
-			)}
+			} else {
+				<div className='start-section'>
+					<div className='start-section'>Let's play!</div>
+					<button className='start-button' onClick={handleStartButtonClick}>Start quiz</button>
+				</div>
+			};
 		</div>
 	);
 }
