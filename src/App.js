@@ -78,33 +78,43 @@ export default function App() {
 		setScore(0);
 		setQuizState(QUIZ_STATES.STARTING);
 	};
+	
+	const handleContent = () => {
+		if (showScore) {
+			return (
+			<div className='end-section'>
+				<div className='score-section'>You scored {score} out of {questions.length}</div>
+				<button className='reset-button' onClick={handleResetButtonClick}>Reset quiz</button>
+			</div>
+			)
+		} else if (quizState === QUIZ_STATES.PLAYING) {
+			return (
+			<>
+			<div className='question-section'>
+					<div className='question-count'>
+						<span>Question {currentQuestion + 1}</span>/{questions.length}
+					</div>
+					<div className='question-text'>{questions[currentQuestion].questionText}</div>
+			</div>
+				<div className='answer-section'>
+					{questions[currentQuestion].answerOptions.map((answerOptions) => 
+					<button className='answer-button' onClick={() => handleAnswerButtonClick(answerOptions.isCorrect)}>{answerOptions.answerText}</button> )}
+				</div>
+			</>
+			)
+		} else {
+			return (
+			<div className='start-section'>
+				<div className='start-section'>Let's play!</div>
+				<button className='start-button' onClick={handleStartButtonClick}>Start quiz</button>
+			</div>
+			)
+		};
+	}
 
 	return (
 		<div className='app'>
-			if ({quizState === QUIZ_STATES.RESETING && showScore}) {
-				<div className='end-section'>
-					<div className='score-section'>You scored {score} out of {questions.length}</div>
-					<button className='reset-button' onClick={handleResetButtonClick}>Reset quiz</button>
-				</div>
-			} else if ({quizState === QUIZ_STATES.PLAYING}) {
-				<>
-				<div className='question-section'>
-						<div className='question-count'>
-							<span>Question {currentQuestion + 1}</span>/{questions.length}
-						</div>
-						<div className='question-text'>{questions[currentQuestion].questionText}</div>
-				</div>
-					<div className='answer-section'>
-						{questions[currentQuestion].answerOptions.map((answerOptions) => 
-						<button className='answer-button' onClick={() => handleAnswerButtonClick(answerOptions.isCorrect)}>{answerOptions.answerText}</button> )}
-					</div>
-				</>
-			} else {
-				<div className='start-section'>
-					<div className='start-section'>Let's play!</div>
-					<button className='start-button' onClick={handleStartButtonClick}>Start quiz</button>
-				</div>
-			};
+		{handleContent()}
 		</div>
 	);
 }
