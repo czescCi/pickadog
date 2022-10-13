@@ -6,42 +6,42 @@ export default function App() {
 		{
 			questionText: 'Where will your dog live',
 			answerOptions: [
-				{ answerText: 'Apartment', isCorrect: false },
-				{ answerText: 'House', isCorrect: false },
+				{ answerText: 'Apartment', isCorrect: false, buyACat: false },
+				{ answerText: 'House', isCorrect: false, buyACat: false },
 			],
 		},
 		{
 			questionText: 'Will he have any kids to snuggle with',
 			answerOptions: [
-				{ answerText: 'No, I don\'t have kids and I\'m not planning on it', isCorrect: false },
-				{ answerText: 'No, I don\'t have kids... Yet', isCorrect: true },
-				{ answerText: 'Yes, I have kids under 12 years old', isCorrect: false },
-				{ answerText: 'Yes, I have kids over 12 years old', isCorrect: false },
+				{ answerText: 'No, I don\'t have kids and I\'m not planning on it', isCorrect: false, buyACat: false },
+				{ answerText: 'No, I don\'t have kids... Yet', isCorrect: true, buyACat: false },
+				{ answerText: 'Yes, I have kids under 12 years old', isCorrect: false, buyACat: false },
+				{ answerText: 'Yes, I have kids over 12 years old', isCorrect: false, buyACat: false },
 			],
 		},
 		{
 			questionText: 'Have you owned a dog before?',
 			answerOptions: [
-				{ answerText: 'I\'m an experienced dog owner', isCorrect: true },
-				{ answerText: 'I have some experience but don\'t feel like an expert', isCorrect: false },
-				{ answerText: 'This will be my first dog', isCorrect: false },
+				{ answerText: 'I\'m an experienced dog owner', isCorrect: true, buyACat: false },
+				{ answerText: 'I have some experience but don\'t feel like an expert', isCorrect: false, buyACat: false },
+				{ answerText: 'This will be my first dog', isCorrect: false, buyACat: false },
 			],
 		},
 		{
 			questionText: 'Will he have roommates? (Other pets)',
 			answerOptions: [
-				{ answerText: 'No other pets', isCorrect: false },
-				{ answerText: 'Other dogs', isCorrect: false },
-				{ answerText: 'Cats', isCorrect: false },
-				{ answerText: 'Other small animals', isCorrect: true },
+				{ answerText: 'No other pets', isCorrect: false, buyACat: false },
+				{ answerText: 'Other dogs', isCorrect: false, buyACat: false },
+				{ answerText: 'Cats', isCorrect: false, buyACat: false },
+				{ answerText: 'Other small animals', isCorrect: true, buyACat: false },
 			],
 		},
 		{
 			questionText: 'In terms of barking, how much noise can you tolerate',
 			answerOptions: [
-				{ answerText: 'None, I prefer a dog who doesn\'t bark much', isCorrect: false },
-				{ answerText: 'Some barking doesn\'t bother me too much', isCorrect: false },
-				{ answerText: 'Barking is not an issue for me', isCorrect: false },
+				{ answerText: 'None, I prefer a dog who doesn\'t bark much', isCorrect: false, buyACat: false },
+				{ answerText: 'Some barking doesn\'t bother me too much', isCorrect: false, buyACat: false },
+				{ answerText: 'Barking is not an issue for me', isCorrect: false, buyACat: false },
 			],
 		},
 		{
@@ -49,42 +49,42 @@ export default function App() {
 			answerOptions: [
 				{ answerText: 'Only indoor playtime', isCorrect: false, buyACat: true },
 				{ answerText: 'A short walk or backyard play', isCorrect: false, buyACat: true },
-				{ answerText: 'Occasional long walks', isCorrect: false },
-				{ answerText: 'Daily walks and jogs', isCorrect: true },
+				{ answerText: 'Occasional long walks', isCorrect: false, buyACat: false },
+				{ answerText: 'Daily walks and jogs', isCorrect: true, buyACat: false },
 			],
 		},
 		{
 			questionText: 'How much time will your new dog be spending alone?',
 			answerOptions: [
-				{ answerText: 'I or someone else qill be home most of the time', isCorrect: false },
-				{ answerText: 'Only about 4 hours at a time', isCorrect: false },
-				{ answerText: 'Just until I get home from work', isCorrect: false },
+				{ answerText: 'I or someone else qill be home most of the time', isCorrect: false, buyACat: false },
+				{ answerText: 'Only about 4 hours at a time', isCorrect: false, buyACat: false },
+				{ answerText: 'Just until I get home from work', isCorrect: false, buyACat: false },
 				{ answerText: 'My dog should be fine by himself for at least 8 hours', isCorrect: true, buyACat: true },
 			],
 		},
 		{
 			questionText: 'How much training will your new dog receive?',
 			answerOptions: [
-				{ answerText: 'None', isCorrect: false },
-				{ answerText: 'Basic obedience', isCorrect: false },
-				{ answerText: 'Advanced obedience', isCorrect: false },
+				{ answerText: 'None', isCorrect: false, buyACat: false },
+				{ answerText: 'Basic obedience', isCorrect: false, buyACat: false },
+				{ answerText: 'Advanced obedience', isCorrect: false, buyACat: false },
 			],
 		},
 		{
 			questionText: 'What size will your new dog be?',
 			answerOptions: [
-				{ answerText: 'Small', isCorrect: false },
-				{ answerText: 'Medium', isCorrect: false },
-				{ answerText: 'Big', isCorrect: false },
-				{ answerText: 'Huge - over 50 kg', isCorrect: true },
+				{ answerText: 'Small', isCorrect: false, buyACat: false },
+				{ answerText: 'Medium', isCorrect: false, buyACat: false },
+				{ answerText: 'Big', isCorrect: false, buyACat: false },
+				{ answerText: 'Huge - over 50 kg', isCorrect: true, buyACat: false },
 			],
 		},
 		{
 			questionText: 'How much time can you dedicate to your new dog\'s grooming?',
 			answerOptions: [
-				{ answerText: 'Very little', isCorrect: false },
-				{ answerText: 'Every so often', isCorrect: false },
-				{ answerText: 'Daily', isCorrect: false },
+				{ answerText: 'Very little', isCorrect: false, buyACat: false },
+				{ answerText: 'Every so often', isCorrect: false, buyACat: false },
+				{ answerText: 'Daily', isCorrect: false, buyACat: false },
 			],
 		},
 	];
@@ -111,6 +111,20 @@ export default function App() {
 			setScore(score + 1);
 		}
 
+		if (buyACat === true) {
+			setBuyACat(true);
+			return (
+				<div className='end-section'>
+					<div className='score-section'>
+						Better buy a cat
+					</div>
+					<button className='reset-button' onClick={handleResetButtonClick}>
+						Reset quiz
+					</button>
+			</div>
+			)
+		}
+
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion <questions.length) {
 			setCurrentQuestion(nextQuestion);
@@ -119,12 +133,12 @@ export default function App() {
 		}
 	}
 
-	const checkIfCatsBetterOption = (buyACat) => {
+	// const checkIfCatsBetterOption = (buyACat) => {
 		
-		if (buyACat === true) {
-			setBuyACat(true);
-		}
-	}
+	// 	if (buyACat === true) {
+	// 		setBuyACat(true);
+	// 	}
+	// }
 
 	const handleStartButtonClick = () => {
 		setQuizState(QUIZ_STATES.PLAYING);
@@ -137,11 +151,6 @@ export default function App() {
 		setQuizState(QUIZ_STATES.STARTING);
 		setBuyACat(false);
 	};
-
-	const handleAnswerButtonFunctions = (answerOptions) => {
-		handleAnswerButtonClick(answerOptions.isCorrect);
-		checkIfCatsBetterOption(answerOptions.buyACat);
-	}
 	
 	const handleContent = () => {
 		if (showScore) {
@@ -166,30 +175,19 @@ export default function App() {
 			</div>
 				<div className='answer-section'>
 					{questions[currentQuestion].answerOptions.map((answerOptions) => 
-					<button className='answer-button' onClick={handleAnswerButtonFunctions}>
+					<button className='answer-button'onClick={() => handleAnswerButtonClick(answerOptions.isCorrect, answerOptions.buyACat)}>
 						{answerOptions.answerText} 
 					</button> )}
 				</div>
 			</>
-			)
-		} else if (buyACat) {
-			return (
-				<div className='end-section'>
-					<div className='score-section'>
-						Better buy a cat
-					</div>
-					<button className='reset-button' onClick={handleResetButtonClick}>
-						Reset quiz
-					</button>
-			</div>
-			)
+			)	
 		} else {
 			return (
 			<div className='start-section'>
 				<div className='start-section'>
 					Let's play!
 				</div>
-				<img src={dogs} className='image' alt='dogs'></img>
+				<img src={dogs} alt='dogs'></img>
 				<button className='start-button' onClick={handleStartButtonClick}>
 					Start quiz
 				</button>
