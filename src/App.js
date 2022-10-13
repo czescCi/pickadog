@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import dogs from './dogs.jpg';
 
 export default function App() {
 	const questions = [
@@ -134,15 +135,24 @@ export default function App() {
 		setShowScore(false);
 		setScore(0);
 		setQuizState(QUIZ_STATES.STARTING);
-		buyACat(false);
+		setBuyACat(false);
 	};
+
+	const handleAnswerButtonFunctions = (answerOptions) => {
+		handleAnswerButtonClick(answerOptions.isCorrect);
+		checkIfCatsBetterOption(answerOptions.buyACat);
+	}
 	
 	const handleContent = () => {
 		if (showScore) {
 			return (
 			<div className='end-section'>
-				<div className='score-section'>You scored {score} out of {questions.length}</div>
-				<button className='reset-button' onClick={handleResetButtonClick}>Reset quiz</button>
+				<div className='score-section'>
+					You scored {score} out of {questions.length}
+				</div>
+				<button className='reset-button' onClick={handleResetButtonClick}>
+					Reset quiz
+				</button>
 			</div>
 			)
 		} else if (quizState === QUIZ_STATES.PLAYING) {
@@ -156,23 +166,33 @@ export default function App() {
 			</div>
 				<div className='answer-section'>
 					{questions[currentQuestion].answerOptions.map((answerOptions) => 
-					<button className='answer-button' onClick={() => handleAnswerButtonClick(answerOptions.isCorrect)}>{answerOptions.answerText}, 
-					{() => checkIfCatsBetterOption(answerOptions.buyACat)}</button> )}
+					<button className='answer-button' onClick={handleAnswerButtonFunctions}>
+						{answerOptions.answerText} 
+					</button> )}
 				</div>
 			</>
 			)
-		} else if (buyACat === true) {
+		} else if (buyACat) {
 			return (
 				<div className='end-section'>
-				<div className='score-section'>Better buy a cat</div>
-				<button className='reset-button' onClick={handleResetButtonClick}>Reset quiz</button>
+					<div className='score-section'>
+						Better buy a cat
+					</div>
+					<button className='reset-button' onClick={handleResetButtonClick}>
+						Reset quiz
+					</button>
 			</div>
 			)
 		} else {
 			return (
 			<div className='start-section'>
-				<div className='start-section'>Let's play!</div>
-				<button className='start-button' onClick={handleStartButtonClick}>Start quiz</button>
+				<div className='start-section'>
+					Let's play!
+				</div>
+				<img src={dogs} className='image' alt='dogs'></img>
+				<button className='start-button' onClick={handleStartButtonClick}>
+					Start quiz
+				</button>
 			</div>
 			)
 		};
