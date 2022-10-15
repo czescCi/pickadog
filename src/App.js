@@ -48,7 +48,7 @@ export default function App() {
 			questionText: 'How much will your dog be able to play with you?',
 			answerOptions: [
 				{ answerText: 'Only indoor playtime', isCorrect: false, buyACat: true },
-				{ answerText: 'A short walk or backyard play', isCorrect: false, buyACat: true },
+				{ answerText: 'A short walk or backyard play', isCorrect: false, buyACat: false },
 				{ answerText: 'Occasional long walks', isCorrect: false, buyACat: false },
 				{ answerText: 'Daily walks and jogs', isCorrect: true, buyACat: false },
 			],
@@ -103,26 +103,31 @@ export default function App() {
 
 	const [quizState, setQuizState] = useState(QUIZ_STATES.STARTING);
 
-	const [buyACat, setBuyACat] = useState(false);
+	const [catAnswer, setCatAnswer] = useState(false);
 
-	const handleAnswerButtonClick = (isCorrect) => {
+	
+	const handleAnswerButtonClick = (isCorrect, buyACat) => {
+		console.log("handleAnswerButtonClick")
 
-		if (isCorrect === true) {
+		if (isCorrect) {
+			console.log("handleAnswerButtonClick.isCorrect")
 			setScore(score + 1);
 		}
 
-		if (buyACat === true) {
-			setBuyACat(true);
-			return (
-				<div className='end-section'>
-					<div className='score-section'>
-						Better buy a cat
-					</div>
-					<button className='reset-button' onClick={handleResetButtonClick}>
-						Reset quiz
-					</button>
-			</div>
-			)
+		if (buyACat) {
+			console.log("handleAnswerButtonClick.buyACat")
+			setCatAnswer(buyACat);
+			console.log(catAnswer);
+			// return (
+			// 	<div className='end-section'>
+			// 		<div className='score-section'>
+			// 			Better buy a cat
+			// 		</div>
+			// 		<button className='reset-button' onClick={handleResetButtonClick}>
+			// 			Reset quiz
+			// 		</button>
+			// </div>
+			// )
 		}
 
 		const nextQuestion = currentQuestion + 1;
@@ -149,11 +154,24 @@ export default function App() {
 		setShowScore(false);
 		setScore(0);
 		setQuizState(QUIZ_STATES.STARTING);
-		setBuyACat(false);
+		setCatAnswer(false);
 	};
 	
 	const handleContent = () => {
-		if (showScore) {
+		console.log("handleContent")
+		console.log(catAnswer)
+		if (catAnswer) {
+			return (
+				<div className='end-section'>
+					<div className='score-section'>
+						Better buy a cat
+					</div>
+					<button className='reset-button' onClick={handleResetButtonClick}>
+						Reset quiz
+					</button>
+			</div>
+			)
+		} else if (showScore) {
 			return (
 			<div className='end-section'>
 				<div className='score-section'>
