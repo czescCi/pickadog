@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import dogs from './dogs.jpg';
+import dogsImg from './dogs.jpg';
 
 export default function App() {
 	const questions = [
@@ -89,6 +89,36 @@ export default function App() {
 		},
 	];
 
+	const dogs = [
+		{
+			childFriendly: true,
+			breed: [
+				{ small: ['Cocker Spaniel', 'Cavalier King Charles Spaniel', 'Boston Terrier'] },
+				{ medium: ['Beagle', 'Cocker Spaniel'] },
+				{ big: ['Labrador Retriever', 'Golden Retriever'] },
+				{ huge: ['Newfoundland'] },
+			]
+		},
+		{
+			wellAlone: true,
+			breed: [
+				{ small: ['French Bulldog'] },
+				{ medium: ['Basset Hound'] },
+				{ big: ['Chow Chow', 'Akita Inu', 'Bernese Mountain Dog'] },
+				{ huge: [''] },
+			]
+		},
+		{
+			lowMaintenance: true,
+			breed: [
+				{ small: ['Dachshund', 'Pug', 'Whippet'] },
+				{ medium: ['Manchester Terrier'] },
+				{ big: ['Vizsla', 'Doberman Pinscher'] },
+				{ huge: [''] },
+			]
+		},
+	];
+
 	const QUIZ_STATES = Object.freeze({
 		STARTING: "Starting",
 		PLAYING: "Playing",
@@ -115,19 +145,8 @@ export default function App() {
 		}
 
 		if (buyACat) {
-			console.log("handleAnswerButtonClick.buyACat")
 			setCatAnswer(buyACat);
 			console.log(catAnswer);
-			// return (
-			// 	<div className='end-section'>
-			// 		<div className='score-section'>
-			// 			Better buy a cat
-			// 		</div>
-			// 		<button className='reset-button' onClick={handleResetButtonClick}>
-			// 			Reset quiz
-			// 		</button>
-			// </div>
-			// )
 		}
 
 		const nextQuestion = currentQuestion + 1;
@@ -137,13 +156,6 @@ export default function App() {
 			setShowScore(true);
 		}
 	}
-
-	// const checkIfCatsBetterOption = (buyACat) => {
-		
-	// 	if (buyACat === true) {
-	// 		setBuyACat(true);
-	// 	}
-	// }
 
 	const handleStartButtonClick = () => {
 		setQuizState(QUIZ_STATES.PLAYING);
@@ -158,8 +170,6 @@ export default function App() {
 	};
 	
 	const handleContent = () => {
-		console.log("handleContent")
-		console.log(catAnswer)
 		if (catAnswer) {
 			return (
 				<div className='end-section'>
@@ -205,7 +215,7 @@ export default function App() {
 				<div className='start-section'>
 					Let's play!
 				</div>
-				<img src={dogs} alt='dogs'></img>
+				<img src={dogsImg} alt='dogs'></img>
 				<button className='start-button' onClick={handleStartButtonClick}>
 					Start quiz
 				</button>

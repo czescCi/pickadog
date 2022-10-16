@@ -7,11 +7,11 @@ body {
 
 * {
     font-family: "Verdana", cursive, sans-serif;
-    color: #ffffff;
+    color: #000000;
 }
 
 body {
-    background-color: #7cc6fe;
+    background-color: #0d1d50;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@ body {
 }
 
 .app {
-    background-color: #252d4a;
+    background-color: #ffffff;
     width: 450px;
     min-height: 200px;
     height: min-content;
@@ -166,4 +166,8 @@ body {
 
 .start-button:focus {
     outline: none;
+}
+
+.start-section img {
+    margin-bottom: 15px;
 }
