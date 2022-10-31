@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 import dogsImg from './img/dogs.jpg';
 import catImg from './img/cat.jpg';
-import dogs from './data/dogs.js';
+import dogs, { DOGS_SIZE } from './data/dogs.js';
 import questions from './data/questions.js';
 
 
-// const COCKER_SPANIEL_NAME = "dupa";
-
 export default function App() {
 
-	// const randomDog = dogs.breed[Math.floor(Math.random()*dogs.breed.length)];
 
 	const QUIZ_STATES = Object.freeze({
 		STARTING: "Starting",
@@ -27,6 +24,32 @@ export default function App() {
 
 	const [catAnswer, setCatAnswer] = useState(false);
 
+	const drawRandomDog = (dogs) => {
+		const randomDog = dogs[Math.floor(Math.random() * dogs.length)].breedName;
+		console.log(randomDog);
+	};
+
+	const drawRandomDogBySize = (size, dogs) => {
+		switch(size) {
+			case DOGS_SIZE.SMALL:
+				let smallDogs = dogs.filter(dogs => dogs.size === DOGS_SIZE.SMALL);
+				drawRandomDog(smallDogs);
+				break;
+			default:
+				console.log("default");
+		}
+	}
+
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
+	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
 	
 	const handleAnswerButtonClick = (isCorrect, buyACat) => {
 		console.log("handleAnswerButtonClick")
@@ -77,9 +100,11 @@ export default function App() {
 		} else if (showScore) {
 			return (
 			<div className='end-section'>
-				<div className='score-section'>
-					You scored {score} out of {questions.length}
-				</div>
+				<ul>
+				{dogs.map((dog) => (
+					<li key={dogs.id}>{dog.breedName}</li>
+				))}
+			</ul>
 				<button className='reset-button' onClick={handleResetButtonClick}>
 					Reset quiz
 				</button>
