@@ -147,6 +147,16 @@ const dogs = [
         goodWithOtherPets: true,
         goodAlone: true,
     },
+    {
+        id: 15,
+        breedName: 'Corgi',
+        size: DOGS_SIZE.SMALL,
+        isChildFriendly: true,
+        easyToTrain: false,
+        lowMaintanance: true,
+        goodWithOtherPets: true,
+        goodAlone: true,
+    },
 ];
 
 export default dogs;

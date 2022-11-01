@@ -1,17 +1,27 @@
+const QUESTION_DESCRIPTION = Object.freeze({
+    HOME: "Living situation",
+    KIDS: "Kids",
+    EXP: "Dogs experience",
+    PETS: "Other pets",
+    BARK: "Barking",
+});
+
 const questions = [{
-        questionText: 'Where will your dog live',
+        id: QUESTION_DESCRIPTION.HOME,
+        questionText: 'Where will your dog live?',
         answerOptions: [
             { answerText: 'Apartment', buyACat: false },
             { answerText: 'House', buyACat: false },
         ],
     },
     {
-        questionText: 'Will he have any kids to snuggle with',
+        id: QUESTION_DESCRIPTION.KIDS,
+        questionText: 'Will he have any kids to snuggle with?',
         answerOptions: [
-            { answerText: 'No, I don\'t have kids and I\'m not planning on it', buyACat: false },
-            { answerText: 'No, I don\'t have kids... Yet', buyACat: false },
-            { answerText: 'Yes, I have kids under 12 years old', buyACat: false },
-            { answerText: 'Yes, I have kids over 12 years old', buyACat: false },
+            { answerText: 'No, I don\'t have kids and I\'m not planning on it', buyACat: false, childFriendly: 1 },
+            { answerText: 'No, I don\'t have kids... Yet', buyACat: false, childFriendly: 3 },
+            { answerText: 'Yes, I have kids under 12 years old', buyACat: false, childFriendly: 3 },
+            { answerText: 'Yes, I have kids over 12 years old', buyACat: false, childFriendly: 2 },
         ],
     },
     {
@@ -25,14 +35,14 @@ const questions = [{
     {
         questionText: 'Will he have roommates? (Other pets)',
         answerOptions: [
-            { answerText: 'No other pets', buyACat: false },
-            { answerText: 'Other dogs', buyACat: false },
-            { answerText: 'Cats', buyACat: false },
-            { answerText: 'Other small animals', buyACat: false },
+            { answerText: 'No other pets', buyACat: false, goodWithPets: 1 },
+            { answerText: 'Other dogs', buyACat: false, goodWithPets: 2 },
+            { answerText: 'Cats', buyACat: false, goodWithPets: 2 },
+            { answerText: 'Other small animals', buyACat: false, goodWithPets: 2 },
         ],
     },
     {
-        questionText: 'In terms of barking, how much noise can you tolerate',
+        questionText: 'In terms of barking, how much noise can you tolerate?',
         answerOptions: [
             { answerText: 'None, I prefer a dog who doesn\'t bark much', buyACat: false },
             { answerText: 'Some barking doesn\'t bother me too much', buyACat: false },
@@ -51,10 +61,10 @@ const questions = [{
     {
         questionText: 'How much time will your new dog be spending alone?',
         answerOptions: [
-            { answerText: 'I or someone else qill be home most of the time', buyACat: false },
-            { answerText: 'Only about 4 hours at a time', buyACat: false },
-            { answerText: 'Just until I get home from work', buyACat: false },
-            { answerText: 'My dog should be fine by himself for at least 8 hours', buyACat: true },
+            { answerText: 'I or someone else will be home most of the time', buyACat: false, goodAlone: 1 },
+            { answerText: 'Only about 4 hours at a time', buyACat: false, goodAlone: 2 },
+            { answerText: 'Just until I get home from work', buyACat: false, goodAlone: 3 },
+            { answerText: 'My dog should be fine by himself for at least 8 hours', buyACat: true, goodAlone: 3 },
         ],
     },
     {
@@ -68,10 +78,10 @@ const questions = [{
     {
         questionText: 'What size will your new dog be?',
         answerOptions: [
-            { answerText: 'Small', buyACat: false },
-            { answerText: 'Medium', buyACat: false },
-            { answerText: 'Big', buyACat: false },
-            { answerText: 'Huge - over 50 kg', buyACat: false },
+            { answerText: 'small', buyACat: false },
+            { answerText: 'medium', buyACat: false },
+            { answerText: 'big', buyACat: false },
+            { answerText: 'huge', buyACat: false },
         ],
     },
     {

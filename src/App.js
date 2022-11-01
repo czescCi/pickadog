@@ -24,6 +24,8 @@ export default function App() {
 
 	const [catAnswer, setCatAnswer] = useState(false);
 
+	const [dogSize, setDogSize] = useState('');
+
 	const drawRandomDog = (dogs) => {
 		const randomDog = dogs[Math.floor(Math.random() * dogs.length)].breedName;
 		console.log(randomDog);
@@ -34,34 +36,29 @@ export default function App() {
 			case DOGS_SIZE.SMALL:
 				let smallDogs = dogs.filter(dogs => dogs.size === DOGS_SIZE.SMALL);
 				drawRandomDog(smallDogs);
-				break;
+			break;
+			case DOGS_SIZE.MEDIUM:
+				let mediumDogs = dogs.filter(dogs => dogs.size === DOGS_SIZE.MEDIUM);
+				drawRandomDog(mediumDogs);
+			break;
+			case DOGS_SIZE.BIG:
+				let bigDogs = dogs.filter(dogs => dogs.size === DOGS_SIZE.BIG);
+				drawRandomDog(bigDogs);
+			break;
 			default:
-				console.log("default");
+				let hugeDogs = dogs.filter(dogs => dogs.size === DOGS_SIZE.HUGE);
+				drawRandomDog(hugeDogs);
 		}
 	}
-
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
-	drawRandomDogBySize(DOGS_SIZE.SMALL, dogs)
 	
-	const handleAnswerButtonClick = (isCorrect, buyACat) => {
-		console.log("handleAnswerButtonClick")
-
-		if (isCorrect) {
-			console.log("handleAnswerButtonClick.isCorrect")
-			setScore(score + 1);
-		}
-
+	const handleAnswerButtonClick = (buyACat, answerText) => {
+		
 		if (buyACat) {
 			setCatAnswer(buyACat);
-			console.log(catAnswer);
+		}
+
+		if(answerText === DOGS_SIZE.SMALL) {
+			setDogSize(DOGS_SIZE.SMALL);
 		}
 
 		const nextQuestion = currentQuestion + 1;
@@ -79,9 +76,9 @@ export default function App() {
 	const handleResetButtonClick = () => {
 		setCurrentQuestion(0);
 		setShowScore(false);
-		setScore(0);
 		setQuizState(QUIZ_STATES.STARTING);
 		setCatAnswer(false);
+		setDogSize('');
 	};
 	
 	const handleContent = () => {
@@ -97,14 +94,15 @@ export default function App() {
 					</button>
 			</div>
 			)
-		} else if (showScore) {
+		} else if (dogSize === DOGS_SIZE.SMALL || 
+					dogSize === DOGS_SIZE.MEDIUM || 
+					dogSize === DOGS_SIZE.BIG || 
+					dogSize === DOGS_SIZE.HUGE) {
 			return (
 			<div className='end-section'>
-				<ul>
-				{dogs.map((dog) => (
-					<li key={dogs.id}>{dog.breedName}</li>
-				))}
-			</ul>
+				<div className='score-section'>
+						{drawRandomDogBySize}
+					</div>
 				<button className='reset-button' onClick={handleResetButtonClick}>
 					Reset quiz
 				</button>
@@ -121,7 +119,7 @@ export default function App() {
 			</div>
 				<div className='answer-section'>
 					{questions[currentQuestion].answerOptions.map((answerOptions) => 
-					<button className='answer-button'onClick={() => handleAnswerButtonClick(answerOptions.isCorrect, answerOptions.buyACat)}>
+					<button className='answer-button'onClick={() => handleAnswerButtonClick(answerOptions.buyACat, answerOptions.answerText)}>
 						{answerOptions.answerText} 
 					</button> )}
 				</div>
