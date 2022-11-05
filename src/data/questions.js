@@ -1,3 +1,5 @@
+import { DOGS_SIZE } from './dogs.js';
+
 const QUESTION_DESCRIPTION = Object.freeze({
     HOME: "Living situation",
     KIDS: "Kids",
@@ -15,46 +17,47 @@ const questions = [{
         id: QUESTION_DESCRIPTION.HOME,
         questionText: 'Where will your dog live?',
         answerOptions: [
-            { answerText: 'Apartment', buyACat: false },
-            { answerText: 'House', buyACat: false },
+            { answerText: 'Small apartment', excludedSize: DOGS_SIZE.HUGE },
+            { answerText: 'Apartment' },
+            { answerText: 'House' },
         ],
     },
     {
         id: QUESTION_DESCRIPTION.KIDS,
         questionText: 'Will he have any kids to snuggle with?',
         answerOptions: [
-            { answerText: 'No, I don\'t have kids and I\'m not planning on it', buyACat: false, childFriendly: 1 },
-            { answerText: 'No, I don\'t have kids... Yet', buyACat: false, childFriendly: 3 },
-            { answerText: 'Yes, I have kids under 12 years old', buyACat: false, childFriendly: 3 },
-            { answerText: 'Yes, I have kids over 12 years old', buyACat: false, childFriendly: 2 },
+            { answerText: 'No, I don\'t have kids and I\'m not planning on it' },
+            { answerText: 'No, I don\'t have kids... Yet', childFriendlyRequired: true },
+            { answerText: 'Yes, I have kids under 12 years old', childFriendlyRequired: true },
+            { answerText: 'Yes, I have kids over 12 years old', childFriendlyRequired: true },
         ],
     },
     {
         id: QUESTION_DESCRIPTION.EXP,
         questionText: 'Have you owned a dog before?',
         answerOptions: [
-            { answerText: 'I\'m an experienced dog owner', buyACat: false },
-            { answerText: 'I have some experience but don\'t feel like an expert', buyACat: false },
-            { answerText: 'This will be my first dog', buyACat: false },
+            { answerText: 'I\'m an experienced dog owner', experienced: true },
+            { answerText: 'I have some experience but don\'t feel like an expert', experienced: true },
+            { answerText: 'This will be my first dog' },
         ],
     },
     {
         id: QUESTION_DESCRIPTION.PETS,
-        questionText: 'Will he have roommates? (Other pets)',
+        questionText: 'Will it have roommates? (Other pets)',
         answerOptions: [
-            { answerText: 'No other pets', buyACat: false, goodWithPets: 1 },
-            { answerText: 'Other dogs', buyACat: false, goodWithPets: 2 },
-            { answerText: 'Cats', buyACat: false, goodWithPets: 2 },
-            { answerText: 'Other small animals', buyACat: false, goodWithPets: 2 },
+            { answerText: 'No other pets' },
+            { answerText: 'Other dogs', haveOtherPets: true },
+            { answerText: 'Cats', haveOtherPets: true },
+            { answerText: 'Other small animals', haveOtherPets: true },
         ],
     },
     {
         id: QUESTION_DESCRIPTION.BARK,
         questionText: 'In terms of barking, how much noise can you tolerate?',
         answerOptions: [
-            { answerText: 'None, I prefer a dog who doesn\'t bark much', buyACat: false },
-            { answerText: 'Some barking doesn\'t bother me too much', buyACat: false },
-            { answerText: 'Barking is not an issue for me', buyACat: false },
+            { answerText: 'None, I prefer a dog who doesn\'t bark much', quietRequired: true },
+            { answerText: 'Some barking doesn\'t bother me too much' },
+            { answerText: 'Barking is not an issue for me'},
         ],
     },
     {
@@ -63,46 +66,46 @@ const questions = [{
         answerOptions: [
             { answerText: 'Only indoor playtime', buyACat: true },
             { answerText: 'A short walk or backyard play', buyACat: false },
-            { answerText: 'Occasional long walks', buyACat: false },
-            { answerText: 'Daily walks and jogs', buyACat: false },
+            { answerText: 'Occasional long walks', buyACat: false, active: true },
+            { answerText: 'Daily walks and jogs', buyACat: false, active: true },
         ],
     },
     {
         id: QUESTION_DESCRIPTION.ALONE,
         questionText: 'How much time will your new dog be spending alone?',
         answerOptions: [
-            { answerText: 'I or someone else will be home most of the time', buyACat: false, goodAlone: 1 },
-            { answerText: 'Only about 4 hours at a time', buyACat: false, goodAlone: 2 },
-            { answerText: 'Just until I get home from work', buyACat: false, goodAlone: 3 },
-            { answerText: 'My dog should be fine by himself for at least 8 hours', buyACat: true, goodAlone: 3 },
+            { answerText: 'I or someone else will be home most of the time', buyACat: false },
+            { answerText: 'Only about 4 hours at a time', buyACat: false },
+            { answerText: 'Just until I get home from work', buyACat: false, oftenAway: true },
+            { answerText: 'My dog should be fine by himself for at least 8 hours', buyACat: true, oftenAway: true },
         ],
     },
     {
         id: QUESTION_DESCRIPTION.TRAIN,
         questionText: 'How much training will your new dog receive?',
         answerOptions: [
-            { answerText: 'None', buyACat: false },
-            { answerText: 'Basic obedience', buyACat: false },
-            { answerText: 'Advanced obedience', buyACat: false },
+            { answerText: 'None', buyACat: true },
+            { answerText: 'Basic obedience', buyACat: false, wantsToTrain: true },
+            { answerText: 'Advanced obedience', buyACat:false, wantsToTrain: true },
         ],
     },
     {
         id: QUESTION_DESCRIPTION.SIZE,
         questionText: 'What size will your new dog be?',
         answerOptions: [
-            { answerText: 'small', buyACat: false },
-            { answerText: 'medium', buyACat: false },
-            { answerText: 'big', buyACat: false },
-            { answerText: 'huge', buyACat: false },
+            { answerText: 'Small', size: DOGS_SIZE.SMALL },
+            { answerText: 'Medium', size: DOGS_SIZE.MEDIUM },
+            { answerText: 'Big', size: DOGS_SIZE.BIG },
+            { answerText: 'Huge - over 50 kg', size: DOGS_SIZE.HUGE },
         ],
     },
     {
         id: QUESTION_DESCRIPTION.GROOM,
         questionText: 'How much time can you dedicate to your new dog\'s grooming?',
         answerOptions: [
-            { answerText: 'Very little', buyACat: false },
-            { answerText: 'Every so often', buyACat: false },
-            { answerText: 'Daily', buyACat: false },
+            { answerText: 'Very little' },
+            { answerText: 'Every so often', timeToBrush: true },
+            { answerText: 'Daily', timeToBrush: true },
         ],
     },
 ];

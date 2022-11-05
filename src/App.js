@@ -24,7 +24,7 @@ export default function App() {
 	const [dogSize, setDogSize] = useState('');
 
 	const drawRandomDog = (dogs) => {
-		const randomDog = dogs[Math.floor(Math.random() * dogs.length)].breedName;
+		let randomDog = dogs[Math.floor(Math.random() * dogs.length)].breedName;
 		console.log(randomDog);
 	};
 
@@ -50,12 +50,11 @@ export default function App() {
 	
 	const handleAnswerButtonClick = (buyACat, answerText) => {
 		answers.push(answerText);
-		console.log(answers);
 		if (buyACat) {
 			setCatAnswer(buyACat);
 		}
 
-		if(answerText === DOGS_SIZE.SMALL) {
+		if (answerText === DOGS_SIZE.SMALL) {
 			setDogSize(DOGS_SIZE.SMALL);
 		}
 
