@@ -4,6 +4,11 @@ const QUESTION_DESCRIPTION = Object.freeze({
     EXP: "Dogs experience",
     PETS: "Other pets",
     BARK: "Barking",
+    PLAY: "Playing",
+    ALONE: "Alone time",
+    TRAIN: "Training",
+    SIZE: "Size",
+    GROOM: "Grooming",
 });
 
 const questions = [{
@@ -25,6 +30,7 @@ const questions = [{
         ],
     },
     {
+        id: QUESTION_DESCRIPTION.EXP,
         questionText: 'Have you owned a dog before?',
         answerOptions: [
             { answerText: 'I\'m an experienced dog owner', buyACat: false },
@@ -33,6 +39,7 @@ const questions = [{
         ],
     },
     {
+        id: QUESTION_DESCRIPTION.PETS,
         questionText: 'Will he have roommates? (Other pets)',
         answerOptions: [
             { answerText: 'No other pets', buyACat: false, goodWithPets: 1 },
@@ -42,6 +49,7 @@ const questions = [{
         ],
     },
     {
+        id: QUESTION_DESCRIPTION.BARK,
         questionText: 'In terms of barking, how much noise can you tolerate?',
         answerOptions: [
             { answerText: 'None, I prefer a dog who doesn\'t bark much', buyACat: false },
@@ -50,6 +58,7 @@ const questions = [{
         ],
     },
     {
+        id: QUESTION_DESCRIPTION.PLAY,
         questionText: 'How much will your dog be able to play with you?',
         answerOptions: [
             { answerText: 'Only indoor playtime', buyACat: true },
@@ -59,6 +68,7 @@ const questions = [{
         ],
     },
     {
+        id: QUESTION_DESCRIPTION.ALONE,
         questionText: 'How much time will your new dog be spending alone?',
         answerOptions: [
             { answerText: 'I or someone else will be home most of the time', buyACat: false, goodAlone: 1 },
@@ -68,6 +78,7 @@ const questions = [{
         ],
     },
     {
+        id: QUESTION_DESCRIPTION.TRAIN,
         questionText: 'How much training will your new dog receive?',
         answerOptions: [
             { answerText: 'None', buyACat: false },
@@ -76,6 +87,7 @@ const questions = [{
         ],
     },
     {
+        id: QUESTION_DESCRIPTION.SIZE,
         questionText: 'What size will your new dog be?',
         answerOptions: [
             { answerText: 'small', buyACat: false },
@@ -85,6 +97,7 @@ const questions = [{
         ],
     },
     {
+        id: QUESTION_DESCRIPTION.GROOM,
         questionText: 'How much time can you dedicate to your new dog\'s grooming?',
         answerOptions: [
             { answerText: 'Very little', buyACat: false },

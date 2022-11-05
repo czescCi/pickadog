@@ -4,6 +4,7 @@ import catImg from './img/cat.jpg';
 import dogs, { DOGS_SIZE } from './data/dogs.js';
 import questions from './data/questions.js';
 
+let answers = []
 
 export default function App() {
 
@@ -15,10 +16,6 @@ export default function App() {
 	});
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-
-	const [showScore, setShowScore] = useState(false);
-
-	const [score, setScore] = useState(0);
 
 	const [quizState, setQuizState] = useState(QUIZ_STATES.STARTING);
 
@@ -52,7 +49,8 @@ export default function App() {
 	}
 	
 	const handleAnswerButtonClick = (buyACat, answerText) => {
-		
+		answers.push(answerText);
+		console.log(answers);
 		if (buyACat) {
 			setCatAnswer(buyACat);
 		}
@@ -65,7 +63,8 @@ export default function App() {
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
-			setShowScore(true);
+			console.log(answers);
+			setQuizState(QUIZ_STATES.RESETING);
 		}
 	}
 
@@ -75,7 +74,6 @@ export default function App() {
 
 	const handleResetButtonClick = () => {
 		setCurrentQuestion(0);
-		setShowScore(false);
 		setQuizState(QUIZ_STATES.STARTING);
 		setCatAnswer(false);
 		setDogSize('');
@@ -94,14 +92,11 @@ export default function App() {
 					</button>
 			</div>
 			)
-		} else if (dogSize === DOGS_SIZE.SMALL || 
-					dogSize === DOGS_SIZE.MEDIUM || 
-					dogSize === DOGS_SIZE.BIG || 
-					dogSize === DOGS_SIZE.HUGE) {
+		} else if (quizState === QUIZ_STATES.RESETING) {
 			return (
 			<div className='end-section'>
 				<div className='score-section'>
-						{drawRandomDogBySize}
+						{drawRandomDogBySize(dogs.size, dogs)}
 					</div>
 				<button className='reset-button' onClick={handleResetButtonClick}>
 					Reset quiz
@@ -120,7 +115,7 @@ export default function App() {
 				<div className='answer-section'>
 					{questions[currentQuestion].answerOptions.map((answerOptions) => 
 					<button className='answer-button'onClick={() => handleAnswerButtonClick(answerOptions.buyACat, answerOptions.answerText)}>
-						{answerOptions.answerText} 
+							{answerOptions.answerText} 
 					</button> )}
 				</div>
 			</>
