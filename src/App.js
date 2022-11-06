@@ -4,8 +4,6 @@ import catImg from './img/cat.jpg';
 import dogs, { DOGS_SIZE } from './data/dogs.js';
 import questions from './data/questions.js';
 
-let answers = []
-
 export default function App() {
 
 
@@ -21,48 +19,53 @@ export default function App() {
 
 	const [catAnswer, setCatAnswer] = useState(false);
 
-	const [dogSize, setDogSize] = useState('');
+	let dogsFeatures = 
+		{
+			// excludedSize: undefined,
+			// childFriendlyRequired: undefined,
+			// experienced: undefined,
+			// haveOtherPets: undefined,
+			// quietRequired: undefined,
+			// active: undefined,
+			// oftenAway: undefined,
+			// wantsToTrain: undefined,
+			// size: undefined,
+			// timeToBrush: undefined,			
+		};
 
 	const drawRandomDog = (dogs) => {
 		let randomDog = dogs[Math.floor(Math.random() * dogs.length)].breedName;
 		console.log(randomDog);
 	};
 
-	const drawRandomDogBySize = (size, dogs) => {
-		switch(size) {
-			case DOGS_SIZE.SMALL:
-				let smallDogs = dogs.filter(dogs => dogs.size === DOGS_SIZE.SMALL);
-				drawRandomDog(smallDogs);
-			break;
-			case DOGS_SIZE.MEDIUM:
-				let mediumDogs = dogs.filter(dogs => dogs.size === DOGS_SIZE.MEDIUM);
-				drawRandomDog(mediumDogs);
-			break;
-			case DOGS_SIZE.BIG:
-				let bigDogs = dogs.filter(dogs => dogs.size === DOGS_SIZE.BIG);
-				drawRandomDog(bigDogs);
-			break;
-			default:
-				let hugeDogs = dogs.filter(dogs => dogs.size === DOGS_SIZE.HUGE);
-				drawRandomDog(hugeDogs);
-		}
-	}
-	
-	const handleAnswerButtonClick = (buyACat, answerText) => {
-		answers.push(answerText);
-		if (buyACat) {
-			setCatAnswer(buyACat);
+
+	const handleAnswerButtonClick = (answer) => {
+		if (answer.buyACat) {
+			setCatAnswer(answer.buyACat);
 		}
 
-		if (answerText === DOGS_SIZE.SMALL) {
-			setDogSize(DOGS_SIZE.SMALL);
-		}
+		// if (answer.excludedSize === DOGS_SIZE.HUGE) {
+		// 	let excluded = DOGS_SIZE.HUGE;
+		// 	let dogsWithoutHugeBreeds = dogs.filter(dog => !excluded.includes(dog.size));
+		// 	console.log(dogsWithoutHugeBreeds);
+		// }
+		dogsFeatures.excludedSize = answer.excludedSize;
+		dogsFeatures.childFriendlyRequired = answer.childFriendlyRequired;
+		dogsFeatures.experienced = answer.experienced;
+		dogsFeatures.haveOtherPets = answer.haveOtherPets;
+		dogsFeatures.quietRequired = answer.quietRequired;
+		dogsFeatures.active = answer.active;
+		dogsFeatures.oftenAway = answer.oftenAway;
+		dogsFeatures.wantsToTrain = answer.wantsToTrain;
+		dogsFeatures.size = answer.size;
+		dogsFeatures.timeToBrush = answer.timeToBrush;
+
+		console.log(dogsFeatures);
 
 		const nextQuestion = currentQuestion + 1;
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
-			console.log(answers);
 			setQuizState(QUIZ_STATES.RESETING);
 		}
 	}
@@ -75,7 +78,6 @@ export default function App() {
 		setCurrentQuestion(0);
 		setQuizState(QUIZ_STATES.STARTING);
 		setCatAnswer(false);
-		setDogSize('');
 	};
 	
 	const handleContent = () => {
@@ -95,7 +97,7 @@ export default function App() {
 			return (
 			<div className='end-section'>
 				<div className='score-section'>
-						{drawRandomDogBySize(dogs.size, dogs)}
+						{/* {drawRandomDogBySize(dogs.size, dogs)} */}
 					</div>
 				<button className='reset-button' onClick={handleResetButtonClick}>
 					Reset quiz
@@ -112,9 +114,9 @@ export default function App() {
 					<div className='question-text'>{questions[currentQuestion].questionText}</div>
 			</div>
 				<div className='answer-section'>
-					{questions[currentQuestion].answerOptions.map((answerOptions) => 
-					<button className='answer-button'onClick={() => handleAnswerButtonClick(answerOptions.buyACat, answerOptions.answerText)}>
-							{answerOptions.answerText} 
+					{questions[currentQuestion].answerOptions.map((answer) => 
+					<button className='answer-button'onClick={() => handleAnswerButtonClick(answer)}>
+							{answer.answerText} 
 					</button> )}
 				</div>
 			</>
