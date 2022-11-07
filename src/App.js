@@ -4,6 +4,20 @@ import catImg from './img/cat.jpg';
 import dogs, { DOGS_SIZE } from './data/dogs.js';
 import questions from './data/questions.js';
 
+let dogsFeatures = 
+{
+	excludedSize: undefined,
+	childFriendlyRequired: undefined,
+	experienced: undefined,
+	haveOtherPets: undefined,
+	quietRequired: undefined,
+	active: undefined,
+	oftenAway: undefined,
+	wantsToTrain: undefined,
+	size: undefined,
+	timeToBrush: undefined,			
+};
+
 export default function App() {
 
 
@@ -19,25 +33,58 @@ export default function App() {
 
 	const [catAnswer, setCatAnswer] = useState(false);
 
-	let dogsFeatures = 
-		{
-			// excludedSize: undefined,
-			// childFriendlyRequired: undefined,
-			// experienced: undefined,
-			// haveOtherPets: undefined,
-			// quietRequired: undefined,
-			// active: undefined,
-			// oftenAway: undefined,
-			// wantsToTrain: undefined,
-			// size: undefined,
-			// timeToBrush: undefined,			
-		};
 
-	const drawRandomDog = (dogs) => {
-		let randomDog = dogs[Math.floor(Math.random() * dogs.length)].breedName;
+	const pickADog = () => {
+		let newDogs = dogs;
+		if (dogsFeatures.excludedSize) {
+			newDogs = newDogs.filter(dog => !excludedSize.includes(dog.size));
+		}
+
+		if (dogsFeatures.childFriendlyRequired) {
+			newDogs = newDogs.filter(dog => childFriendlyRequired.includes(dog.isChildFriendly));
+		}
+
+		if (dogsFeatures.experienced) {
+			newDogs = newDogs.filter(dog => !experienced.includes(dog.easyToTrain));
+		}
+
+		if (dogsFeatures.haveOtherPets) {
+			newDogs = newDogs.filter(dog => haveOtherPets.includes(dog.goodWithOtherPets));
+		}
+
+		if (dogsFeatures.oftenAway) {
+			newDogs = newDogs.filter(dog => oftenAway.includes(dog.goodAlone));
+		}
+
+		if (dogsFeatures.wantsToTrain) {
+			newDogs = newDogs.filter(dog => wantsToTrain.includes(dog.easyToTrain));
+		}
+
+		if (dogsFeatures.timeToBrush) {
+			newDogs = newDogs.filter(dog => !timeToBrush.includes(dog.lowMaintanance));
+		}
+
+		if (dogsFeatures.size === DOGS_SIZE.SMALL) {
+			newDogs = newDogs.filter(dog => size.includes(dog.size));
+		}
+
+		if (dogsFeatures.size === DOGS_SIZE.MEDIUM) {
+			newDogs = newDogs.filter(dog => size.includes(dog.size));
+		}
+
+		if (dogsFeatures.size === DOGS_SIZE.BIG) {
+			newDogs = newDogs.filter(dog => size.includes(dog.size));
+		}
+
+		if (dogsFeatures.size === DOGS_SIZE.HUGE) {
+			newDogs = newDogs.filter(dog => size.includes(dog.size));
+		}
+	}
+
+	let drawRandomDog = (newDogs) => {
+		let randomDog = newDogs[Math.floor(Math.random() * newDogs.length)].breedName;
 		console.log(randomDog);
 	};
-
 
 	const handleAnswerButtonClick = (answer) => {
 		if (answer.buyACat) {
@@ -49,16 +96,52 @@ export default function App() {
 		// 	let dogsWithoutHugeBreeds = dogs.filter(dog => !excluded.includes(dog.size));
 		// 	console.log(dogsWithoutHugeBreeds);
 		// }
-		dogsFeatures.excludedSize = answer.excludedSize;
-		dogsFeatures.childFriendlyRequired = answer.childFriendlyRequired;
-		dogsFeatures.experienced = answer.experienced;
-		dogsFeatures.haveOtherPets = answer.haveOtherPets;
-		dogsFeatures.quietRequired = answer.quietRequired;
-		dogsFeatures.active = answer.active;
-		dogsFeatures.oftenAway = answer.oftenAway;
-		dogsFeatures.wantsToTrain = answer.wantsToTrain;
-		dogsFeatures.size = answer.size;
-		dogsFeatures.timeToBrush = answer.timeToBrush;
+		console.log(dogsFeatures.excludedSize);
+
+		if (dogsFeatures.excludedSize === undefined) {
+			console.log(answer.excludedSize);
+			dogsFeatures.excludedSize = answer.excludedSize;
+		}
+
+		if (dogsFeatures.childFriendlyRequired === undefined) {
+			dogsFeatures.childFriendlyRequired = answer.childFriendlyRequired;
+		}
+		 	
+		if (dogsFeatures.experienced === undefined) {
+			dogsFeatures.experienced = answer.experienced;
+		}
+
+		if (dogsFeatures.haveOtherPets === undefined) {
+			dogsFeatures.haveOtherPets = answer.haveOtherPets;
+		}
+	
+		if (dogsFeatures.quietRequired === undefined) {
+			dogsFeatures.quietRequired = answer.quietRequired;
+		}
+
+		if (dogsFeatures.active === undefined) {
+			dogsFeatures.active = answer.active;
+		}
+
+		if (dogsFeatures.quietRequired === undefined) {
+			dogsFeatures.quietRequired = answer.quietRequired;
+		}
+
+		if (dogsFeatures.oftenAway === undefined) {
+			dogsFeatures.oftenAway = answer.oftenAway;
+		}
+
+		if (dogsFeatures.wantsToTrain === undefined) {
+			dogsFeatures.wantsToTrain = answer.wantsToTrain;
+		}
+
+		if (dogsFeatures.size === undefined) {
+			dogsFeatures.size = answer.size;
+		}
+
+		if (dogsFeatures.timeToBrush === undefined) {
+			dogsFeatures.timeToBrush = answer.timeToBrush;
+		}		
 
 		console.log(dogsFeatures);
 
@@ -66,6 +149,7 @@ export default function App() {
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
+
 			setQuizState(QUIZ_STATES.RESETING);
 		}
 	}
@@ -97,7 +181,7 @@ export default function App() {
 			return (
 			<div className='end-section'>
 				<div className='score-section'>
-						{/* {drawRandomDogBySize(dogs.size, dogs)} */}
+						{pickADog}
 					</div>
 				<button className='reset-button' onClick={handleResetButtonClick}>
 					Reset quiz
