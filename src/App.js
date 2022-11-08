@@ -181,7 +181,7 @@ export default function App() {
 			return (
 			<div className='end-section'>
 				<div className='score-section'>
-						{pickADog}
+						{pickADog()}
 					</div>
 				<button className='reset-button' onClick={handleResetButtonClick}>
 					Reset quiz
