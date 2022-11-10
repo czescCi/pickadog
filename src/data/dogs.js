@@ -71,7 +71,7 @@ const dogs = [
         id: 7,
         breedName: 'Akita',
         size: DOGS_SIZE.BIG,
-        isChildFriendly: true,
+        isChildFriendly: false,
         easyToTrain: false,
         lowMaintanance: false,
         goodWithOtherPets: false,
@@ -91,7 +91,7 @@ const dogs = [
         id: 9,
         breedName: 'Chihuahua',
         size: DOGS_SIZE.SMALL,
-        isChildFriendly: true,
+        isChildFriendly: false,
         easyToTrain: false,
         lowMaintanance: true,
         goodWithOtherPets: true,
@@ -156,6 +156,66 @@ const dogs = [
         lowMaintanance: true,
         goodWithOtherPets: true,
         goodAlone: true,
+    },
+    {
+        id: 16,
+        breedName: 'Chow Chow',
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: false,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: false,
+        goodAlone: true,
+    },
+    {
+        id: 17,
+        breedName: 'Weimaraner',
+        size: DOGS_SIZE.BIG,
+        isChildFriendly: false,
+        easyToTrain: true,
+        lowMaintanance: true,
+        goodWithOtherPets: false,
+        goodAlone: false,
+    },
+    {
+        id: 18,
+        breedName: 'Border Collie',
+        
+    },
+    {
+        id: 19,
+        breedName: 'Shetland Sheepdog',
+        
+    },{
+        id: 20,
+        breedName: 'Airedale Terrier',
+        
+    },{
+        id: 21,
+        breedName: 'Alaskan Malamute',
+        
+    },{
+        id: 22,
+        breedName: 'Bernese Mountain Dog',
+        
+    },{
+        id: 23,
+        breedName: 'American Pitbull Terrier',
+    },{
+        id: 24,
+        breedName: 'American Staffordshire Terrier',
+    },{
+        id: 25,
+        breedName: 'Boxer',
+    },{
+        id: 26,
+        breedName: 'The Persian Greyhound - Saluki',
+    },{
+        id: 27,
+        breedName: 'Chesapeake Bay Retriever',
+    },{
+        id: 28,
+        breedName: 'English Cocker Spaniel',
     },
 ];
 

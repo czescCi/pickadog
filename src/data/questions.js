@@ -26,7 +26,7 @@ const questions = [{
         id: QUESTION_DESCRIPTION.KIDS,
         questionText: 'Will he have any kids to snuggle with?',
         answerOptions: [
-            { answerText: 'No, I don\'t have kids and I\'m not planning on it' },
+            { answerText: 'No, I don\'t have kids and I\'m not planning on it', childFriendlyRequired: false },
             { answerText: 'No, I don\'t have kids... Yet', childFriendlyRequired: true },
             { answerText: 'Yes, I have kids under 12 years old', childFriendlyRequired: true },
             { answerText: 'Yes, I have kids over 12 years old', childFriendlyRequired: true },
@@ -38,14 +38,14 @@ const questions = [{
         answerOptions: [
             { answerText: 'I\'m an experienced dog owner', experienced: true },
             { answerText: 'I have some experience but don\'t feel like an expert', experienced: true },
-            { answerText: 'This will be my first dog' },
+            { answerText: 'This will be my first dog', experienced: false },
         ],
     },
     {
         id: QUESTION_DESCRIPTION.PETS,
         questionText: 'Will it have roommates? (Other pets)',
         answerOptions: [
-            { answerText: 'No other pets' },
+            { answerText: 'No other pets', haveOtherPets: false },
             { answerText: 'Other dogs', haveOtherPets: true },
             { answerText: 'Cats', haveOtherPets: true },
             { answerText: 'Other small animals', haveOtherPets: true },

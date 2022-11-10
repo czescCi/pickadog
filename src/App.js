@@ -4,7 +4,7 @@ import catImg from './img/cat.jpg';
 import dogs, { DOGS_SIZE } from './data/dogs.js';
 import questions from './data/questions.js';
 
-let dogsFeatures = 
+let dogsFeatures =
 {
 	excludedSize: undefined,
 	childFriendlyRequired: undefined,
@@ -15,7 +15,7 @@ let dogsFeatures =
 	oftenAway: undefined,
 	wantsToTrain: undefined,
 	size: undefined,
-	timeToBrush: undefined,			
+	timeToBrush: undefined,
 };
 
 export default function App() {
@@ -33,53 +33,99 @@ export default function App() {
 
 	const [catAnswer, setCatAnswer] = useState(false);
 
+	/* eslint-disable no-undef */
 
 	const pickADog = () => {
 		let newDogs = dogs;
-		if (dogsFeatures.excludedSize) {
-			newDogs = newDogs.filter(dog => !excludedSize.includes(dog.size));
+
+		// if (dogsFeatures.excludedSize !== undefined) {
+		// 	newDogs = newDogs.filter(dog => !dogsFeatures.excludedSize.includes(dog.size));
+		// }
+
+		// if (dogsFeatures.childFriendlyRequired !== undefined) {
+		// 	console.log("newdogs bf: ");
+		// 	console.log(newDogs);
+		// 	newDogs = newDogs.filter(dog => {
+		// 		if (dogsFeatures.childFriendlyRequired && dog.isChildFriendly) {
+		// 			return true;
+		// 		} else if (dogsFeatures.childFriendlyRequired && !dog.isChildFriendly) {
+		// 			return false;
+		// 		} else if (!dogsFeatures.childFriendlyRequired) {
+		// 			return true;
+		// 		}
+			
+		// 	});
+		// 	console.log(newDogs);
+		// }
+
+		// if (dogsFeatures.experienced !== undefined) {
+		// 	console.log("newdogs bf: ");
+		// 	console.log(newDogs);
+		// 	newDogs = newDogs.filter(dog => {
+		// 		// jesli experienced jest true to zwracam wszystkie psy
+		// 		if (dogsFeatures.experienced) {
+		// 			return true;
+		// 		// jesli experienced jest false i psy sa easy to train to psa
+		// 		} else if (!dogsFeatures.experienced && dog.easyToTrain) {
+		// 			return true;
+		// 		// jesli experienced jest false i psy nie sa easy to train to nie zwracam nic
+		// 		} else if (!dogsFeatures.experienced && !easyToTrain) {
+		// 			return false
+		// 		}
+		// 	});
+		// 	console.log("newdogs af: ");
+		// 	console.log(newDogs);
+		// }
+
+
+		if (dogsFeatures.haveOtherPets !== undefined) {
+			newDogs = newDogs.filter(dog => {
+				//jesli have other pets jest true i good with other pets jest true to zwracam psa
+				if (dogsFeatures.haveOtherPets && dog.goodWithOtherPets) {
+					return true;
+				//jesli have other pets jest true, ale pies nie jest good with other pets to nie zwracam psa
+				} else if (dogsFeatures.haveOtherPets && !dog.goodWithOtherPets) {
+					return false;
+				//jesli have other pets jest false to zwracam wszyskie psy
+				} else if (!dogsFeatures.haveOtherPets) {
+					return true;
+				}
+			});
+			console.log("newdogs af: ");
+		  	console.log(newDogs);
 		}
 
-		if (dogsFeatures.childFriendlyRequired) {
-			newDogs = newDogs.filter(dog => childFriendlyRequired.includes(dog.isChildFriendly));
-		}
+		// if (dogsFeatures.oftenAway !== undefined) {
+		// 	newDogs = newDogs.filter(dog => dogsFeatures.oftenAway.includes(dog.goodAlone));
+		// }
 
-		if (dogsFeatures.experienced) {
-			newDogs = newDogs.filter(dog => !experienced.includes(dog.easyToTrain));
-		}
+		// if (dogsFeatures.wantsToTrain !== undefined) {
+		// 	newDogs = newDogs.filter(dog => dogsFeatures.wantsToTrain.includes(dog.easyToTrain));
+		// }
 
-		if (dogsFeatures.haveOtherPets) {
-			newDogs = newDogs.filter(dog => haveOtherPets.includes(dog.goodWithOtherPets));
-		}
+		// if (dogsFeatures.timeToBrush !== undefined) {
+		// 	newDogs = newDogs.filter(dog => !dogsFeatures.timeToBrush.includes(dog.lowMaintanance));
+		// }
 
-		if (dogsFeatures.oftenAway) {
-			newDogs = newDogs.filter(dog => oftenAway.includes(dog.goodAlone));
-		}
+		// if (dogsFeatures.size === DOGS_SIZE.SMALL) {
+		// 	newDogs = newDogs.filter(dog => dogsFeatures.size.includes(dog.size));
+		// }
 
-		if (dogsFeatures.wantsToTrain) {
-			newDogs = newDogs.filter(dog => wantsToTrain.includes(dog.easyToTrain));
-		}
+		// if (dogsFeatures.size === DOGS_SIZE.MEDIUM) {
+		// 	newDogs = newDogs.filter(dog => dogsFeatures.size.includes(dog.size));
+		// }
 
-		if (dogsFeatures.timeToBrush) {
-			newDogs = newDogs.filter(dog => !timeToBrush.includes(dog.lowMaintanance));
-		}
+		// if (dogsFeatures.size === DOGS_SIZE.BIG) {
+		// 	newDogs = newDogs.filter(dog => dogsFeatures.size.includes(dog.size));
+		// }
 
-		if (dogsFeatures.size === DOGS_SIZE.SMALL) {
-			newDogs = newDogs.filter(dog => size.includes(dog.size));
-		}
-
-		if (dogsFeatures.size === DOGS_SIZE.MEDIUM) {
-			newDogs = newDogs.filter(dog => size.includes(dog.size));
-		}
-
-		if (dogsFeatures.size === DOGS_SIZE.BIG) {
-			newDogs = newDogs.filter(dog => size.includes(dog.size));
-		}
-
-		if (dogsFeatures.size === DOGS_SIZE.HUGE) {
-			newDogs = newDogs.filter(dog => size.includes(dog.size));
-		}
+		// if (dogsFeatures.size === DOGS_SIZE.HUGE) {
+		// 	newDogs = newDogs.filter(dog => dogsFeatures.size.includes(dog.size));
+		// }
 	}
+
+	/* eslint-enable no-undef */
+
 
 	let drawRandomDog = (newDogs) => {
 		let randomDog = newDogs[Math.floor(Math.random() * newDogs.length)].breedName;
@@ -106,7 +152,7 @@ export default function App() {
 		if (dogsFeatures.childFriendlyRequired === undefined) {
 			dogsFeatures.childFriendlyRequired = answer.childFriendlyRequired;
 		}
-		 	
+
 		if (dogsFeatures.experienced === undefined) {
 			dogsFeatures.experienced = answer.experienced;
 		}
@@ -114,7 +160,7 @@ export default function App() {
 		if (dogsFeatures.haveOtherPets === undefined) {
 			dogsFeatures.haveOtherPets = answer.haveOtherPets;
 		}
-	
+
 		if (dogsFeatures.quietRequired === undefined) {
 			dogsFeatures.quietRequired = answer.quietRequired;
 		}
@@ -141,7 +187,7 @@ export default function App() {
 
 		if (dogsFeatures.timeToBrush === undefined) {
 			dogsFeatures.timeToBrush = answer.timeToBrush;
-		}		
+		}
 
 		console.log(dogsFeatures);
 
@@ -163,7 +209,7 @@ export default function App() {
 		setQuizState(QUIZ_STATES.STARTING);
 		setCatAnswer(false);
 	};
-	
+
 	const handleContent = () => {
 		if (catAnswer) {
 			return (
@@ -175,54 +221,54 @@ export default function App() {
 					<button className='reset-button' onClick={handleResetButtonClick}>
 						Reset quiz
 					</button>
-			</div>
+				</div>
 			)
 		} else if (quizState === QUIZ_STATES.RESETING) {
 			return (
-			<div className='end-section'>
-				<div className='score-section'>
+				<div className='end-section'>
+					<div className='score-section'>
 						{pickADog()}
 					</div>
-				<button className='reset-button' onClick={handleResetButtonClick}>
-					Reset quiz
-				</button>
-			</div>
+					<button className='reset-button' onClick={handleResetButtonClick}>
+						Reset quiz
+					</button>
+				</div>
 			)
 		} else if (quizState === QUIZ_STATES.PLAYING) {
 			return (
-			<>
-			<div className='question-section'>
-					<div className='question-count'>
-						<span>Question {currentQuestion + 1}</span>/{questions.length}
+				<>
+					<div className='question-section'>
+						<div className='question-count'>
+							<span>Question {currentQuestion + 1}</span>/{questions.length}
+						</div>
+						<div className='question-text'>{questions[currentQuestion].questionText}</div>
 					</div>
-					<div className='question-text'>{questions[currentQuestion].questionText}</div>
-			</div>
-				<div className='answer-section'>
-					{questions[currentQuestion].answerOptions.map((answer) => 
-					<button className='answer-button'onClick={() => handleAnswerButtonClick(answer)}>
-							{answer.answerText} 
-					</button> )}
-				</div>
-			</>
-			)	
+					<div className='answer-section'>
+						{questions[currentQuestion].answerOptions.map((answer) =>
+							<button className='answer-button' onClick={() => handleAnswerButtonClick(answer)}>
+								{answer.answerText}
+							</button>)}
+					</div>
+				</>
+			)
 		} else {
 			return (
-			<div className='start-section'>
 				<div className='start-section'>
-					Let's play!
+					<div className='start-section'>
+						Let's play!
+					</div>
+					<img src={dogsImg} className='dogs-img' alt='dogs'></img>
+					<button className='start-button' onClick={handleStartButtonClick}>
+						Start quiz
+					</button>
 				</div>
-				<img src={dogsImg} className='dogs-img' alt='dogs'></img>
-				<button className='start-button' onClick={handleStartButtonClick}>
-					Start quiz
-				</button>
-			</div>
 			)
 		};
 	}
 
 	return (
 		<div className='app'>
-		{handleContent()}
+			{handleContent()}
 		</div>
 	);
 }
