@@ -7,7 +7,7 @@ export const DOGS_SIZE = Object.freeze({
 
 
 const dogs = [
-    {   
+    {
         id: 1,
         breedName: 'Cavalier King Charles Spaniel',
         size: DOGS_SIZE.SMALL,
@@ -47,7 +47,7 @@ const dogs = [
         goodWithOtherPets: true,
         goodAlone: true,
     },
-    {    
+    {
         id: 5,
         breedName: 'Nova Scotia Duck Tolling Retriever',
         size: DOGS_SIZE.MEDIUM,
@@ -96,7 +96,7 @@ const dogs = [
         lowMaintanance: true,
         goodWithOtherPets: true,
         goodAlone: true,
-    }, 
+    },
     {
         id: 10,
         breedName: 'Bullmastiff',
@@ -180,42 +180,114 @@ const dogs = [
     {
         id: 18,
         breedName: 'Border Collie',
-        
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: true,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: true,
+        goodAlone: true,
     },
     {
         id: 19,
         breedName: 'Shetland Sheepdog',
-        
-    },{
+        size: DOGS_SIZE.SMALL,
+        isChildFriendly: true,
+        easyToTrain: false,
+        lowMaintanance: false,
+        goodWithOtherPets: false,
+        goodAlone: false,
+    },
+    {
         id: 20,
         breedName: 'Airedale Terrier',
-        
-    },{
+        size: DOGS_SIZE.SMALL,
+        isChildFriendly: false,
+        easyToTrain: true,
+        lowMaintanance: true,
+        goodWithOtherPets: false,
+        goodAlone: false,
+    },
+    {
         id: 21,
         breedName: 'Alaskan Malamute',
-        
-    },{
+        size: DOGS_SIZE.BIG,
+        isChildFriendly: false,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: false,
+        goodAlone: false,
+
+    },
+    {
         id: 22,
         breedName: 'Bernese Mountain Dog',
-        
-    },{
+        size: DOGS_SIZE.BIG,
+        isChildFriendly: false,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: false,
+        goodAlone: false,
+
+    },
+    {
         id: 23,
         breedName: 'American Pitbull Terrier',
-    },{
+        size: DOGS_SIZE.BIG,
+        isChildFriendly: false,
+        easyToTrain: false,
+        lowMaintanance: true,
+        goodWithOtherPets: false,
+        goodAlone: true,
+    },
+    {
         id: 24,
         breedName: 'American Staffordshire Terrier',
-    },{
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: false,
+        easyToTrain: false,
+        lowMaintanance: true,
+        goodWithOtherPets: false,
+        goodAlone: true,
+    },
+    {
         id: 25,
         breedName: 'Boxer',
-    },{
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: false,
+        easyToTrain: true,
+        lowMaintanance: true,
+        goodWithOtherPets: false,
+        goodAlone: false,
+    },
+    {
         id: 26,
         breedName: 'The Persian Greyhound - Saluki',
-    },{
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: false,
+        easyToTrain: false,
+        lowMaintanance: false,
+        goodWithOtherPets: false,
+        goodAlone: false,
+    },
+    {
         id: 27,
         breedName: 'Chesapeake Bay Retriever',
-    },{
+        size: DOGS_SIZE.BIG,
+        isChildFriendly: true,
+        easyToTrain: true,
+        lowMaintanance: true,
+        goodWithOtherPets: true,
+        goodAlone: true,
+    },
+    {
         id: 28,
         breedName: 'English Cocker Spaniel',
+        size: DOGS_SIZE.SMALL,
+        isChildFriendly: true,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: true,
+        goodAlone: false,
     },
 ];
 
