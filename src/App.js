@@ -48,6 +48,25 @@ export default function App() {
 			});
 		}
 
+		if (dogsFeatures.excludedSize === DOGS_SIZE.HUGE) {
+
+			const itemToRemoveIndex = questions.findIndex(function(item) {
+				return item.answerOptions.answerText === 'Huge - over 50 kg';
+			  });
+			  console.log("index number: ");
+			  console.log(itemToRemoveIndex);
+
+			  // proceed to remove an item only if it exists.
+			  if(itemToRemoveIndex !== -1){
+				questions.splice(itemToRemoveIndex, 1);
+			  }
+		}
+		
+		let questionsArray = questions;
+
+		console.log("This is questions array: ");
+		console.log(questionsArray);
+
 		if (dogsFeatures.childFriendlyRequired !== undefined) {
 			newDogs = newDogs.filter(dog => {
 				if (dogsFeatures.childFriendlyRequired && dog.isChildFriendly) {
@@ -194,10 +213,10 @@ export default function App() {
 	/* eslint-enable no-undef */
 
 
-	let drawRandomDog = (newDogs) => {
-		let randomDog = newDogs[Math.floor(Math.random() * newDogs.length)].breedName;
-		console.log(randomDog);
-	};
+	// let drawRandomDog = (newDogs) => {
+	// 	let randomDog = newDogs[Math.floor(Math.random() * newDogs.length)].breedName;
+	// 	console.log(randomDog);
+	// };
 
 	const handleAnswerButtonClick = (answer) => {
 		if (answer.buyACat) {
