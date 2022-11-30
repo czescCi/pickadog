@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import dogsImg from './img/dogs.jpg';
 import catImg from './img/cat.jpg';
+import hamsterImg from './img/hamster.jpg';
 import dogs, { DOGS_SIZE } from './data/dogs.js';
 import questions from './data/questions.js';
 
@@ -24,7 +25,8 @@ export default function App() {
 	const QUIZ_STATES = Object.freeze({
 		STARTING: "Starting",
 		PLAYING: "Playing",
-		RESETING: "Reseting"
+		DOG_FOUND: "Dog found",
+		DOG_NOT_FOUND: "Dog not found"
 	});
 
 	const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -32,6 +34,8 @@ export default function App() {
 	const [quizState, setQuizState] = useState(QUIZ_STATES.STARTING);
 
 	const [catAnswer, setCatAnswer] = useState(false);
+
+	const [breedName, setBreedName] = useState(null);
 
 	/* eslint-disable no-undef */
 
@@ -48,24 +52,6 @@ export default function App() {
 			});
 		}
 
-		if (dogsFeatures.excludedSize === DOGS_SIZE.HUGE) {
-
-			const itemToRemoveIndex = questions.findIndex(function(item) {
-				return item.answerOptions.answerText === 'Huge - over 50 kg';
-			  });
-			  console.log("index number: ");
-			  console.log(itemToRemoveIndex);
-
-			  // proceed to remove an item only if it exists.
-			  if(itemToRemoveIndex !== -1){
-				questions.splice(itemToRemoveIndex, 1);
-			  }
-		}
-		
-		let questionsArray = questions;
-
-		console.log("This is questions array: ");
-		console.log(questionsArray);
 
 		if (dogsFeatures.childFriendlyRequired !== undefined) {
 			newDogs = newDogs.filter(dog => {
@@ -208,17 +194,52 @@ export default function App() {
 				return false;
 			});
 		}
+
+		console.log('new dogs: ');
+		console.log(newDogs);
+
+		let pickADogResult = {
+			dogFound: false,
+			breedName: null,
+		};
+
+		pickADogResult.dogFound = newDogs.length > 0;
+
+		if (pickADogResult.dogFound) {
+			pickADogResult.breedName = newDogs[Math.floor(Math.random() * newDogs.length)].breedName
+		};
+
+		return pickADogResult;
+
 	}
 
 	/* eslint-enable no-undef */
 
-
-	// let drawRandomDog = (newDogs) => {
-	// 	let randomDog = newDogs[Math.floor(Math.random() * newDogs.length)].breedName;
-	// 	console.log(randomDog);
-	// };
-
 	const handleAnswerButtonClick = (answer) => {
+		if (answer.answerText === 'Small apartment') {
+
+			const questionToModify = questions.find(question => {
+				return question.answerOptions.some(answer => answer.answerText === 'Huge - over 50 kg');
+			});
+
+			questionToModify.answerOptions = questionToModify.answerOptions.filter(answer => {
+				if (answer.answerText === 'Huge - over 50 kg') {
+					return false;
+				}
+				return true;
+			});
+
+			console.log("question to modify: ");
+			console.log(questionToModify);
+
+
+			let questionsArray = questions;
+
+			console.log("This is questions array: ");
+			console.log(questionsArray);
+
+		}
+
 		if (answer.buyACat) {
 			setCatAnswer(answer.buyACat);
 		}
@@ -273,8 +294,12 @@ export default function App() {
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
-
-			setQuizState(QUIZ_STATES.RESETING);
+			pickADog();
+			if (newDogs.length > 0) {
+				setQuizState(QUIZ_STATES.DOG_FOUND);
+			} else {
+				setQuizState(QUIZ_STATES.DOG_NOT_FOUND);
+			}
 		}
 	}
 
@@ -301,11 +326,24 @@ export default function App() {
 					</button>
 				</div>
 			)
-		} else if (quizState === QUIZ_STATES.RESETING) {
+		} else if (quizState === QUIZ_STATES.DOG_NOT_FOUND) {
 			return (
 				<div className='end-section'>
 					<div className='score-section'>
-						{pickADog()}
+						Sorry, there is no dog for you. <br></br>
+						Maybe buy a hamster.
+					</div>
+					<img src={hamsterImg} className='hamster-img' alt='hamster'></img>
+					<button className='reset-button' onClick={handleResetButtonClick}>
+						Reset quiz
+					</button>
+				</div>
+			)
+		} else if (quizState === QUIZ_STATES.DOG_FOUND) {
+			return (
+				<div className='end-section'>
+					<div className='score-section'>
+
 					</div>
 					<button className='reset-button' onClick={handleResetButtonClick}>
 						Reset quiz
