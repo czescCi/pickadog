@@ -1,10 +1,11 @@
+import cavalierImg from '../img/cavalier.jpg';
+
 export const DOGS_SIZE = Object.freeze({
     SMALL: "small",
     MEDIUM: "medium",
     BIG: "big",
     HUGE: "huge",
 });
-
 
 const dogs = [
     {
@@ -16,6 +17,7 @@ const dogs = [
         lowMaintanance: false,
         goodWithOtherPets: true,
         goodAlone: true,
+        icon: cavalierImg,
     },
     {
         id: 2,
@@ -288,6 +290,96 @@ const dogs = [
         lowMaintanance: false,
         goodWithOtherPets: true,
         goodAlone: false,
+    },
+    {
+        id: 29,
+        breedName: 'Basset Hound',
+        size: DOGS_SIZE.SMALL,
+        isChildFriendly: true,
+        easyToTrain: false,
+        lowMaintanance: true,
+        goodWithOtherPets: true,
+        goodAlone: true,
+    },
+    {
+        id: 30,
+        breedName: 'Basenji',
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: true,
+        easyToTrain: false,
+        lowMaintanance: true,
+        goodWithOtherPets: false,
+        goodAlone: true,
+    },
+    {
+        id: 31,
+        breedName: 'Australian Shepherd',
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: false,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: true,
+        goodAlone: true,
+    },
+    {
+        id: 32,
+        breedName: 'Australian Terrier',
+        size: DOGS_SIZE.SMALL,
+        isChildFriendly: true,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: true,
+        goodAlone: true,
+    },
+    {
+        id: 33,
+        breedName: 'Bearded Collie',
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: false,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: true,
+        goodAlone: true,
+    },
+    {
+        id: 34,
+        breedName: 'Belgian Shepherd - Groenendael',
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: false,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: false,
+        goodAlone: true,
+    },
+    {
+        id: 35,
+        breedName: 'Black Russian Terrier',
+        size: DOGS_SIZE.BIG,
+        isChildFriendly: true,
+        easyToTrain: true,
+        lowMaintanance: false,
+        goodWithOtherPets: false,
+        goodAlone: true,
+    },
+    {
+        id: 36,
+        breedName: 'Bluetick Coonhound',
+        size: DOGS_SIZE.MEDIUM,
+        isChildFriendly: true,
+        easyToTrain: false,
+        lowMaintanance: true,
+        goodWithOtherPets: true,
+        goodAlone: true,
+    },
+    {
+        id: 37,
+        breedName: 'Bloodhound',
+        size: DOGS_SIZE.BIG,
+        isChildFriendly: true,
+        easyToTrain: false,
+        lowMaintanance: true,
+        goodWithOtherPets: true,
+        goodAlone: true,
     },
 ];
 

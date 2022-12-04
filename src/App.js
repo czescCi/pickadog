@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import dogsImg from './img/dogs.jpg';
 import catImg from './img/cat.jpg';
 import hamsterImg from './img/hamster.jpg';
-import dogs, { DOGS_SIZE } from './data/dogs.js';
+import dogs from './data/dogs.js';
 import questions from './data/questions.js';
+import pickADog from './pickADog.js';
 
 let dogsFeatures =
 {
@@ -18,6 +19,10 @@ let dogsFeatures =
 	size: undefined,
 	timeToBrush: undefined,
 };
+
+let dogBreedResult = null;
+
+let dogIcon = null;
 
 export default function App() {
 
@@ -35,183 +40,177 @@ export default function App() {
 
 	const [catAnswer, setCatAnswer] = useState(false);
 
-	const [breedName, setBreedName] = useState(null);
 
 	/* eslint-disable no-undef */
 
-	const pickADog = () => {
-		let newDogs = dogs;
+	// const pickADog = (dogsList, dogsFeaturesList) => {
+	// 	let newDogs = dogsList;
 
-		if (dogsFeatures.excludedSize !== undefined) {
-			newDogs = newDogs.filter(dog => {
-				if (dogsFeatures.excludedSize === DOGS_SIZE.HUGE && dog.size === DOGS_SIZE.HUGE) {
-					return false;
-				}
+	// 	if (dogsFeaturesList.excludedSize !== undefined) {
+	// 		newDogs = newDogs.filter(dog => {
+	// 			if (dogsFeaturesList.excludedSize === DOGS_SIZE.HUGE && dog.size === DOGS_SIZE.HUGE) {
+	// 				return false;
+	// 			}
 
-				return true;
-			});
-		}
-
-
-		if (dogsFeatures.childFriendlyRequired !== undefined) {
-			newDogs = newDogs.filter(dog => {
-				if (dogsFeatures.childFriendlyRequired && dog.isChildFriendly) {
-					return true;
-				} else if (dogsFeatures.childFriendlyRequired && !dog.isChildFriendly) {
-					return false;
-				} else if (!dogsFeatures.childFriendlyRequired) {
-					return true;
-				}
-
-				return true;
-			});
-		}
-
-		if (dogsFeatures.experienced !== undefined) {
-			newDogs = newDogs.filter(dog => {
-				// jesli experienced jest true to zwracam wszystkie psy
-				if (dogsFeatures.experienced) {
-					return true;
-					// jesli experienced jest false i psy sa easy to train to psa
-				} else if (!dogsFeatures.experienced && dog.easyToTrain) {
-					return true;
-					// jesli experienced jest false i psy nie sa easy to train to nie zwracam nic
-				} else if (!dogsFeatures.experienced && !easyToTrain) {
-					return false
-				}
-
-				return true;
-			});
-		}
+	// 			return true;
+	// 		});
+	// 	}
 
 
-		if (dogsFeatures.haveOtherPets !== undefined) {
-			newDogs = newDogs.filter(dog => {
-				//jesli have other pets jest true i good with other pets jest true to zwracam psa
-				if (dogsFeatures.haveOtherPets && dog.goodWithOtherPets) {
-					return true;
-					//jesli have other pets jest true, ale pies nie jest good with other pets to nie zwracam psa
-				} else if (dogsFeatures.haveOtherPets && !dog.goodWithOtherPets) {
-					return false;
-					//jesli have other pets jest false to zwracam wszyskie psy
-				} else if (!dogsFeatures.haveOtherPets) {
-					return true;
-				}
+	// 	if (dogsFeaturesList.childFriendlyRequired !== undefined) {
+	// 		newDogs = newDogs.filter(dog => {
+	// 			if (dogsFeaturesList.childFriendlyRequired && dog.isChildFriendly) {
+	// 				return true;
+	// 			} else if (dogsFeaturesList.childFriendlyRequired && !dog.isChildFriendly) {
+	// 				return false;
+	// 			} else if (!dogsFeaturesList.childFriendlyRequired) {
+	// 				return true;
+	// 			}
 
-				return true;
-			});
-		}
+	// 			return true;
+	// 		});
+	// 	}
 
-		if (dogsFeatures.oftenAway !== undefined) {
-			newDogs = newDogs.filter(dog => {
-				if (dogsFeatures.oftenAway && dog.goodAlone) {
-					return true;
-				} else if (dogsFeatures.oftenAway && !dog.goodAlone) {
-					return false;
-				} else if (!dogsFeatures.oftenAway) {
-					return true;
-				}
+	// 	if (dogsFeaturesList.experienced !== undefined) {
+	// 		newDogs = newDogs.filter(dog => {
+	// 			// jesli experienced jest true to zwracam wszystkie psy
+	// 			if (dogsFeaturesList.experienced) {
+	// 				return true;
+	// 				// jesli experienced jest false i psy sa easy to train to psa
+	// 			} else if (!dogsFeaturesList.experienced && dog.easyToTrain) {
+	// 				return true;
+	// 				// jesli experienced jest false i psy nie sa easy to train to nie zwracam nic
+	// 			} else if (!dogsFeaturesList.experienced && !dog.easyToTrain) {
+	// 				return false
+	// 			}
 
-				return true;
-			});
-		}
+	// 			return true;
+	// 		});
+	// 	}
 
-		if (dogsFeatures.wantsToTrain !== undefined) {
-			newDogs = newDogs.filter(dog => {
-				if (dogsFeatures.wantsToTrain && dog.easyToTrain) {
-					return true;
-				} else if (dogsFeatures.wantsToTrain && !dog.easyToTrain) {
-					return false;
-				} else if (!dogsFeatures.wantsToTrain) {
-					return true;
-				}
 
-				return true;
-			});
-		}
+	// 	if (dogsFeaturesList.haveOtherPets !== undefined) {
+	// 		newDogs = newDogs.filter(dog => {
+	// 			//jesli have other pets jest true i good with other pets jest true to zwracam psa
+	// 			if (dogsFeaturesList.haveOtherPets && dog.goodWithOtherPets) {
+	// 				return true;
+	// 				//jesli have other pets jest true, ale pies nie jest good with other pets to nie zwracam psa
+	// 			} else if (dogsFeaturesList.haveOtherPets && !dog.goodWithOtherPets) {
+	// 				return false;
+	// 				//jesli have other pets jest false to zwracam wszyskie psy
+	// 			} else if (!dogsFeaturesList.haveOtherPets) {
+	// 				return true;
+	// 			}
 
-		if (dogsFeatures.timeToBrush !== undefined) {
-			newDogs = newDogs.filter(dog => {
-				if (dogsFeatures.timeToBrush && dog.lowMaintanance) {
-					return true;
-				} else if (dogsFeatures.timeToBrush && !dog.lowMaintanance) {
-					return true;
-				} else if (!dogsFeatures.timeToBrush && dog.lowMaintanance) {
-					return true;
-				} else if (!dogsFeatures.timeToBrush) {
-					return false;
-				}
+	// 			return true;
+	// 		});
+	// 	}
 
-				return true;
-			});
-		}
+	// 	if (dogsFeaturesList.oftenAway !== undefined) {
+	// 		newDogs = newDogs.filter(dog => {
+	// 			if (dogsFeaturesList.oftenAway && dog.goodAlone) {
+	// 				return true;
+	// 			} else if (dogsFeaturesList.oftenAway && !dog.goodAlone) {
+	// 				return false;
+	// 			} else if (!dogsFeaturesList.oftenAway) {
+	// 				return true;
+	// 			}
 
-		if (dogsFeatures.size === DOGS_SIZE.SMALL) {
-			// jesli rozmiar wybranego psa jest small pokazuje tylko psy z size small
-			newDogs = newDogs.filter(dog => {
-				if (dog.size === DOGS_SIZE.SMALL) {
-					return true;
-				}
+	// 			return true;
+	// 		});
+	// 	}
 
-				return false;
-			});
-		}
+	// 	if (dogsFeaturesList.wantsToTrain !== undefined) {
+	// 		newDogs = newDogs.filter(dog => {
+	// 			if (dogsFeaturesList.wantsToTrain && dog.easyToTrain) {
+	// 				return true;
+	// 			} else if (dogsFeaturesList.wantsToTrain && !dog.easyToTrain) {
+	// 				return false;
+	// 			} else if (!dogsFeaturesList.wantsToTrain) {
+	// 				return true;
+	// 			}
 
-		if (dogsFeatures.size === DOGS_SIZE.MEDIUM) {
-			console.log("newDogs before: ");
-			console.log(newDogs);
-			newDogs = newDogs.filter(dog => {
-				if (dog.size === DOGS_SIZE.MEDIUM) {
-					return true;
-				}
+	// 			return true;
+	// 		});
+	// 	}
 
-				return false;
-			});
-			console.log("newDogs after: ");
-			console.log(newDogs);
-		}
+	// 	if (dogsFeaturesList.timeToBrush !== undefined) {
+	// 		newDogs = newDogs.filter(dog => {
+	// 			if (dogsFeaturesList.timeToBrush && dog.lowMaintanance) {
+	// 				return true;
+	// 			} else if (dogsFeaturesList.timeToBrush && !dog.lowMaintanance) {
+	// 				return true;
+	// 			} else if (!dogsFeaturesList.timeToBrush && dog.lowMaintanance) {
+	// 				return true;
+	// 			} else if (!dogsFeaturesList.timeToBrush) {
+	// 				return false;
+	// 			}
 
-		if (dogsFeatures.size === DOGS_SIZE.BIG) {
-			console.log("bignewDogs before: ");
-			console.log(newDogs);
-			newDogs = newDogs.filter(dog => {
-				if (dog.size === DOGS_SIZE.BIG) {
-					return true;
-				}
+	// 			return true;
+	// 		});
+	// 	}
 
-				return false;
-			});
-			console.log("bignewDogs after: ");
-			console.log(newDogs);
-		}
+	// 	if (dogsFeaturesList.size === DOGS_SIZE.SMALL) {
+	// 		// jesli rozmiar wybranego psa jest small pokazuje tylko psy z size small
+	// 		newDogs = newDogs.filter(dog => {
+	// 			if (dog.size === DOGS_SIZE.SMALL) {
+	// 				return true;
+	// 			}
 
-		if (dogsFeatures.size === DOGS_SIZE.HUGE) {
-			newDogs = newDogs.filter(dog => {
-				if (dog.size === DOGS_SIZE.HUGE) {
-					return true;
-				}
+	// 			return false;
+	// 		});
+	// 	}
 
-				return false;
-			});
-		}
+	// 	if (dogsFeaturesList.size === DOGS_SIZE.MEDIUM) {
+	
+	// 		newDogs = newDogs.filter(dog => {
+	// 			if (dog.size === DOGS_SIZE.MEDIUM) {
+	// 				return true;
+	// 			}
 
-		console.log('new dogs: ');
-		console.log(newDogs);
+	// 			return false;
+	// 		});
+	// 	}
 
-		let pickADogResult = {
-			dogFound: false,
-			breedName: null,
-		};
+	// 	if (dogsFeaturesList.size === DOGS_SIZE.BIG) {
+	// 		console.log(newDogs);
+	// 		newDogs = newDogs.filter(dog => {
+	// 			if (dog.size === DOGS_SIZE.BIG) {
+	// 				return true;
+	// 			}
 
-		pickADogResult.dogFound = newDogs.length > 0;
+	// 			return false;
+	// 		});
+	// 	}
 
-		if (pickADogResult.dogFound) {
-			pickADogResult.breedName = newDogs[Math.floor(Math.random() * newDogs.length)].breedName
-		};
+	// 	if (dogsFeaturesList.size === DOGS_SIZE.HUGE) {
+	// 		newDogs = newDogs.filter(dog => {
+	// 			if (dog.size === DOGS_SIZE.HUGE) {
+	// 				return true;
+	// 			}
 
-		return pickADogResult;
+	// 			return false;
+	// 		});
+	// 	}
 
-	}
+	// 	console.log('new dogs: ');
+	// 	console.log(newDogs);
+
+	// 	let pickADogResult = {
+	// 		dogFound: false,
+	// 		breedName: null,
+	// 		icon: null,
+	// 	};
+
+	// 	pickADogResult.dogFound = newDogs.length > 0;
+
+	// 	if (pickADogResult.dogFound) {
+	// 		pickADogResult.breedName = newDogs[Math.floor(Math.random() * newDogs.length)].breedName;
+	// 		pickADogResult.icon = newDogs.icon;
+	// 	};
+
+	// 	return pickADogResult;
+	// }
 
 	/* eslint-enable no-undef */
 
@@ -228,16 +227,6 @@ export default function App() {
 				}
 				return true;
 			});
-
-			console.log("question to modify: ");
-			console.log(questionToModify);
-
-
-			let questionsArray = questions;
-
-			console.log("This is questions array: ");
-			console.log(questionsArray);
-
 		}
 
 		if (answer.buyACat) {
@@ -294,8 +283,10 @@ export default function App() {
 		if (nextQuestion < questions.length) {
 			setCurrentQuestion(nextQuestion);
 		} else {
-			pickADog();
-			if (newDogs.length > 0) {
+			let dogInfo = pickADog(dogs, dogsFeatures);
+			if (dogInfo.dogFound) {
+				dogBreedResult = dogInfo.breedName;
+				dogIcon = dogInfo.icon;
 				setQuizState(QUIZ_STATES.DOG_FOUND);
 			} else {
 				setQuizState(QUIZ_STATES.DOG_NOT_FOUND);
@@ -343,7 +334,10 @@ export default function App() {
 			return (
 				<div className='end-section'>
 					<div className='score-section'>
-
+						{dogBreedResult}
+					</div>
+					<div className='score-section'>
+					{/* <img src={} className='hamster-img' alt='hamster'></img> */}
 					</div>
 					<button className='reset-button' onClick={handleResetButtonClick}>
 						Reset quiz
