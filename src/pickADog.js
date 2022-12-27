@@ -1,4 +1,4 @@
-const DOGS_SIZE = require('./data/dogs')
+import DOGS_SIZE from './data/dogs.js';
 
 const pickADog = (dogsList, dogsFeaturesList) => {
     let newDogs = dogsList;
@@ -169,4 +169,4 @@ const pickADog = (dogsList, dogsFeaturesList) => {
     return pickADogResult;
 }
 
-module.exports = pickADog
+export default pickADog;

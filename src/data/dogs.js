@@ -1,6 +1,4 @@
-import cavalierImg from '../img/cavalier.jpg';
-
-export const DOGS_SIZE = Object.freeze({
+const DOGS_SIZE = Object.freeze({
     SMALL: "small",
     MEDIUM: "medium",
     BIG: "big",
@@ -17,7 +15,7 @@ const dogs = [
         lowMaintanance: false,
         goodWithOtherPets: true,
         goodAlone: true,
-        icon: cavalierImg,
+        icon: null,
     },
     {
         id: 2,
@@ -384,3 +382,4 @@ const dogs = [
 ];
 
 export default dogs;
+export { DOGS_SIZE };

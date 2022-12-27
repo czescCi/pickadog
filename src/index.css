@@ -170,6 +170,28 @@ body {
     outline: none;
 }
 
+.learn-more-button {
+    width: 100%;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #0e0544;
+    border-radius: 15px;
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid #27096d;
+    cursor: pointer;
+}
+
+.learn-more-button:hover {
+    background-color: #1d11c5;
+}
+
+.learn-more-button:focus {
+    outline: none;
+}
+
 .dogs-img {
     width: 100%;
     margin: 15px 0;

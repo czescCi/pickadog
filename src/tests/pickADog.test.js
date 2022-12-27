@@ -1,4 +1,5 @@
-const pickADog = require('../pickADog');
+import pickADog from '../pickADog.js';
+import DOGS_SIZE from '../data/dogs.js';
 
 test('Properly choose small dog size', () => {
     // arrange
@@ -11,7 +12,7 @@ test('Properly choose small dog size', () => {
             lowMaintanance: false,
             goodWithOtherPets: true,
             goodAlone: true,
-            icon: cavalierImg,
+            icon: null,
         },
         {
             id: 2,
@@ -54,7 +55,7 @@ test('Properly choose small dog size', () => {
         active: undefined,
         oftenAway: undefined,
         wantsToTrain: undefined,
-        size: undefined,
+        size: DOGS_SIZE.SMALL,
         timeToBrush: undefined,
     };
     // act
