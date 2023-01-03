@@ -15,7 +15,6 @@ const dogs = [
         lowMaintanance: false,
         goodWithOtherPets: true,
         goodAlone: true,
-        icon: null,
     },
     {
         id: 2,

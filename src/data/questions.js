@@ -65,7 +65,7 @@ const questions = [{
         questionText: 'How much will your dog be able to play with you?',
         answerOptions: [
             { answerText: 'Only indoor playtime', 
-            // buyACat: true 
+            buyACat: true 
         },
             { answerText: 'A short walk or backyard play' },
             { answerText: 'Occasional long walks', active: true },
@@ -102,7 +102,7 @@ const questions = [{
             { answerText: 'Small', size: DOGS_SIZE.SMALL },
             { answerText: 'Medium', size: DOGS_SIZE.MEDIUM },
             { answerText: 'Big', size: DOGS_SIZE.BIG },
-            { answerText: 'Huge - over 50 kg', size: DOGS_SIZE.HUGE },
+            { answerText: 'Huge - over 50 kg', size: DOGS_SIZE.HUGE, hide: false },
         ],
     },
     {
@@ -117,3 +117,4 @@ const questions = [{
 ];
 
 export default questions;
+export { QUESTION_DESCRIPTION };
