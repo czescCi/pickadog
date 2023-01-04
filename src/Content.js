@@ -7,6 +7,7 @@ import dogs from "./data/dogs.js";
 import questions from "./data/questions.js";
 import pickADog from "./pickADog.js";
 import { QUESTION_DESCRIPTION } from "./data/questions.js";
+import { useMediaQuery } from 'react-responsive';
 
 let dogBreedResult = null;
 
@@ -40,8 +41,6 @@ const Content = () => {
   const [quizState, setQuizState] = useState(QUIZ_STATES.STARTING);
 
   const [catAnswer, setCatAnswer] = useState(false);
-
-  const [elementVisible, setElementVisible] = useState(false);
 
   const handleAnswerButtonClick = (answer) => {
     if (answer.answerText === "Small apartment") {
@@ -136,7 +135,7 @@ const Content = () => {
   };
 
   const handleResetButtonClick = () => {
-    console.log("reset")
+    console.log("reset");
     setCurrentQuestion(0);
     setQuizState(QUIZ_STATES.STARTING);
     setCatAnswer(false);
@@ -195,13 +194,9 @@ const Content = () => {
     return (
       <div className="end-section section-common">
         <div className="score-section upper-text">{dogBreedResult}</div>
-        <div className="score-section">
-          <img
-            src={dogLoverImg}
-            className="dog-lover-img"
-            alt="dog lover"
-          ></img>
-        </div>
+
+        <img src={dogLoverImg} className="dog-lover-img" alt="dog lover"></img>
+
         <button
           className="learn-more-button button-common"
           onClick={handleLearnMoreButtonClick}
