@@ -11,75 +11,27 @@ body {
   font-family: "Lato", sans-serif;
 }
 
-.question-class-app {
-  background-color: #0e7289;
-  background-image: linear-gradient(240deg, #0e7289 13%, #0a4d5c 100%);
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-}
-
-.desktop-class-app {
+.app {
   background-color: rgb(243, 214, 206);
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   height: 100vh;
   width: 100vw;
+  flex-direction: column;
 }
 
 .section-common {
-  width: 350px;
-  height: 500px;
+  width: 400px;
+  height: 550px;
   border-radius: 50px;
   box-shadow: 0px 0px 24px 0px rgba(66, 68, 90, 1);
   padding: 20px;
   display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #f1cbc0;
-}
-
-@media (width <= 500px) {
-  .section-common {
-    width: calc(100vw - 40px);
-    height: 100vh;
-    padding: 0 20px;
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .button-common {
-    margin-bottom: 30px;
-  }
-
-  .learn-more-button {
-    margin-bottom: 0;
-  }
-}
-
-@media (height <= 500px) {
-  .section-common {
-    width: 100vw;
-    height: 100vh;
-    padding: 0 20px;
-    border-radius: 0;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f1cbc0;
-  }
-}
-
-.button-common {
-  margin-bottom: 30px;
 }
 
 .learn-more-button {
@@ -94,14 +46,11 @@ body {
   border-radius: 15px;
   display: flex;
   padding: 5px;
+  margin-bottom: 30px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   letter-spacing: 2px;
-  /* animate and time the transitions*/
-  -webkit-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-  transition: all 0.4s;
 }
 
 .button-common:hover {
@@ -176,11 +125,9 @@ body {
   margin-top: 30px;
 }
 
-@media (width >= 501px) {
-  .answer-button:hover {
-    background-color: white;
-    color: #0e7289;
-  }
+.answer-button:hover {
+  background-color: white;
+  color: #0e7289;
 }
 
 /* END/RESET SECTION */
@@ -227,30 +174,15 @@ body {
   width: 40%;
 }
 
+.fish-bowl-img {
+    display: none;
+  }
+
 .dog-lover-img {
   width: 72%;
 }
 
-.logo {
-  width: 3%;
-}
-
-/* 
-nav {
-    position: fixed;
-    font-size: 10px;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 8px;
-    text-align: left;
-  } */
-
-.mobile-class-footer {
-  display: none;
-}
-
-.desktop-class-footer {
+footer {
   color: #083a45;
   display: flex;
   flex-direction: row-reverse;
@@ -263,12 +195,139 @@ nav {
   padding: 8px 20px 8px 8px;
 }
 
-.landscape {
-  display: none;
-}
-
 #github-logo {
   color: #083a45;
   height: 22px;
   padding-right: 10px;
+}
+
+/* default styles here for older browsers. 
+       I tend to go for a 600px - 960px width max but using percentages
+    */
+@media only screen and (min-width: 960px) {
+  /* styles for browsers larger than 960px; */
+}
+@media only screen and (min-width: 1440px) {
+  /* styles for browsers larger than 1440px; */
+}
+@media only screen and (min-width: 2000px) {
+  /* for sumo sized (mac) screens */
+}
+@media only screen and (max-width: 480px) {
+  .section-common {
+    width: calc(100vw - 40px);
+    height: 100vh;
+    padding: 0 20px;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: #f1cbc0;
+  }
+
+  .end-section {
+    justify-content: center;
+  }
+
+  .button-common {
+    margin: 15px 0 0 0;
+  }
+
+  .learn-more-button {
+    margin-bottom: 0;
+  }
+
+  .dog-lover-img {
+    width: 80%;
+    margin: 30px 0;
+  }
+
+  footer {
+    display: none;
+  }
+
+  .answer-button:hover {
+    background-color: transparent;
+    color: white;
+  }
+}
+
+@media only screen and (width: 768px) {
+  /* default iPad screens */
+}
+/* different techniques for iPad screening */
+@media only screen and (min-width: 481px) and (max-width: 1024px) and (orientation: portrait) {
+  /* For portrait layouts only */
+}
+
+@media only screen and (height <= 480px) and (orientation: landscape) {
+  .section-common {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 20px);
+    border-radius: 0;
+    padding: 10px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #f1cbc0;
+  }
+
+  .upper-text {
+    width: 250px;
+    margin-top: 0;
+  }
+
+  .button-common {
+    width: 370px;
+  }
+
+  .reset-button {
+    margin-bottom: 0;
+  }
+
+  .answer-section {
+    align-items: center;
+  }
+
+  .answer-button {
+    margin: 10px 0;
+  }
+
+  .answer-button:hover {
+    background-color: transparent;
+    color: white;
+  }
+
+  .question-section {
+    margin-top: 0;
+  }
+
+  .dogs-img {
+    width: 45%;
+  }
+
+  .cat-img {
+    width: 20%;
+  }
+
+  .fish-img {
+    display: none;
+  }
+
+  .fish-bowl-img {
+    display: flex;
+    width: 15%;
+  }
+
+  .dog-lover-img {
+    width: 30%;
+  }
+
+  footer {
+    display: none;
+  }
 }

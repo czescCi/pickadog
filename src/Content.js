@@ -2,12 +2,12 @@ import { useState } from "react";
 import dogsImg from "./img/dogs.jpg";
 import catImg from "./img/cat.jpg";
 import fishImg from "./img/fish.png";
+import fishBowlImg from "./img/fish-bowl.png";
 import dogLoverImg from "./img/dog_lover.png";
 import dogs from "./data/dogs.js";
 import questions from "./data/questions.js";
 import pickADog from "./pickADog.js";
 import { QUESTION_DESCRIPTION } from "./data/questions.js";
-import { useMediaQuery } from 'react-responsive';
 
 let dogBreedResult = null;
 
@@ -162,7 +162,7 @@ const Content = () => {
 
   if (catAnswer) {
     return (
-      <div className="end-section section-common">
+      <div className="end-one-button-section section-common">
         <div className="score-section upper-text">Better buy a cat</div>
         <img src={catImg} className="cat-img" alt="cat"></img>
         <button
@@ -175,13 +175,14 @@ const Content = () => {
     );
   } else if (quizState === QUIZ_STATES.DOG_NOT_FOUND) {
     return (
-      <div className="end-section section-common">
+      <div className="end-one-button-section section-common">
         <div id="fish-text" className="score-section upper-text">
           Sorry, <br></br>
           there is no dog for you. <br></br>
           Maybe buy a fish.
         </div>
         <img src={fishImg} className="fish-img" alt="fish"></img>
+        <img src={fishBowlImg} className="fish-bowl-img" alt="fish-bowl"></img>
         <button
           className="reset-button button-common"
           onClick={handleResetButtonClick}
