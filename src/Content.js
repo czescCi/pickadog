@@ -40,7 +40,7 @@ const Content = () => {
 
   const [quizState, setQuizState] = useState(QUIZ_STATES.STARTING);
 
-  const [catAnswer, setCatAnswer] = useState(false);
+  const [fishAnswer, setFishAnswer] = useState(false);
 
   const handleAnswerButtonClick = (answer) => {
     if (answer.answerText === "Small apartment") {
@@ -65,8 +65,8 @@ const Content = () => {
     //   );
     // }
 
-    if (answer.buyACat) {
-      setCatAnswer(answer.buyACat);
+    if (answer.buyAFish) {
+      setFishAnswer(answer.buyAFish);
     }
 
     if (dogsFeatures.excludedSize === undefined) {
@@ -138,7 +138,7 @@ const Content = () => {
     console.log("reset");
     setCurrentQuestion(0);
     setQuizState(QUIZ_STATES.STARTING);
-    setCatAnswer(false);
+    setFishAnswer(false);
     resetDogsFeatures();
     console.log(dogsFeatures);
     let myQuestion = questions.find((question) => {
@@ -160,11 +160,12 @@ const Content = () => {
     window.open(search, "_blank").focus();
   };
 
-  if (catAnswer) {
+  if (fishAnswer) {
     return (
       <div className="end-one-button-section section-common">
-        <div className="score-section upper-text">Better buy a cat</div>
-        <img src={catImg} className="cat-img" alt="cat"></img>
+        <div className="score-section upper-text">Better buy a fish</div>
+        <img src={fishImg} className="fish-img" alt="fish"></img>
+        <img src={fishBowlImg} className="fish-bowl-img" alt="fish-bowl"></img>
         <button
           className="reset-button button-common"
           onClick={handleResetButtonClick}
@@ -176,13 +177,12 @@ const Content = () => {
   } else if (quizState === QUIZ_STATES.DOG_NOT_FOUND) {
     return (
       <div className="end-one-button-section section-common">
-        <div id="fish-text" className="score-section upper-text">
+        <div id="cat-text" className="score-section upper-text">
           Sorry, <br></br>
           there is no dog for you. <br></br>
-          Maybe buy a fish.
+          Maybe buy a cat.
         </div>
-        <img src={fishImg} className="fish-img" alt="fish"></img>
-        <img src={fishBowlImg} className="fish-bowl-img" alt="fish-bowl"></img>
+        <img src={catImg} className="cat-img" alt="cat"></img>
         <button
           className="reset-button button-common"
           onClick={handleResetButtonClick}

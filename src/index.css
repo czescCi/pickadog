@@ -172,14 +172,16 @@ body {
 
 .fish-img {
   width: 40%;
+  margin: 20px;
 }
 
 .fish-bowl-img {
-    display: none;
-  }
+  display: none;
+}
 
 .dog-lover-img {
   width: 72%;
+  margin: 20px;
 }
 
 footer {
@@ -244,6 +246,10 @@ footer {
     margin: 30px 0;
   }
 
+  .fish-img {
+    width: 50%;
+  }
+
   footer {
     display: none;
   }
@@ -262,7 +268,7 @@ footer {
   /* For portrait layouts only */
 }
 
-@media only screen and (height <= 480px) and (orientation: landscape) {
+@media only screen and (height <= 520px) and (orientation: landscape) {
   .section-common {
     width: calc(100vw - 20px);
     height: calc(100vh - 20px);
@@ -321,10 +327,106 @@ footer {
   .fish-bowl-img {
     display: flex;
     width: 15%;
+    margin: 10px 0;
   }
 
   .dog-lover-img {
     width: 30%;
+  }
+
+  footer {
+    display: none;
+  }
+}
+
+@media only screen and (height <= 300px) and (orientation: landscape) {
+  .section-common {
+    width: calc(100vw - 10px);
+    height: calc(100vh - 10px);
+    border-radius: 0;
+    padding: 5px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #f1cbc0;
+  }
+
+  .upper-text {
+    width: 250px;
+    margin-top: 0;
+  }
+
+  .button-common {
+    width: 370px;
+  }
+
+  .start-button {
+    margin: 10px 0;
+  }
+
+  .reset-button {
+    margin-bottom: 0;
+  }
+
+  .answer-section {
+    align-items: center;
+  }
+
+  .answer-button {
+    height: 40px;
+    font-size: 15px;
+    margin: 5px 0;
+  }
+
+  .answer-button:hover {
+    background-color: transparent;
+    color: white;
+  }
+
+  .learn-more-button {
+    margin-bottom: 0;
+  }
+
+  .question-section {
+    margin-top: 0;
+  }
+
+  .question-section span {
+    font-size: 18px;
+  }
+
+  .question-section .question-count {
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+
+  .question-text {
+    font-size: 16px;
+  }
+
+  .dogs-img {
+    width: 42%;
+  }
+
+  .cat-img {
+    width: 20%;
+  }
+
+  .fish-img {
+    display: none;
+  }
+
+  .fish-bowl-img {
+    display: flex;
+    width: 15%;
+    margin: 10px 0;
+  }
+
+  .dog-lover-img {
+    width: 20%;
+    margin: 0;
   }
 
   footer {

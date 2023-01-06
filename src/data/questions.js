@@ -65,7 +65,7 @@ const questions = [{
         questionText: 'How much will your dog be able to play with you?',
         answerOptions: [
             { answerText: 'Only indoor playtime', 
-            buyACat: true 
+            buyAFish: true 
         },
             { answerText: 'A short walk or backyard play' },
             { answerText: 'Occasional long walks', active: true },
@@ -80,7 +80,7 @@ const questions = [{
             { answerText: 'Only about 4 hours at a time' },
             { answerText: 'Just until I get home from work', oftenAway: true },
             { answerText: 'My dog should be fine by himself for at least 8 hours', 
-            // buyACat: true, 
+            // buyAFish: true, 
             oftenAway: true },
         ],
     },
@@ -89,7 +89,7 @@ const questions = [{
         questionText: 'How much training will your new dog receive?',
         answerOptions: [
             { answerText: 'None', 
-            // buyACat: true 
+            // buyAFish: true 
         },
             { answerText: 'Basic obedience', wantsToTrain: true },
             { answerText: 'Advanced obedience', wantsToTrain: true },
