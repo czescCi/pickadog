@@ -1,0 +1,71 @@
+.button-common {
+    border: none;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 15px;
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    letter-spacing: 2px;
+    margin: 15px 30px;
+  /* animate and time the transitions*/
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.button-common:hover {
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.start-button {
+  height: 50px;
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #0e7289;
+  padding: 5px;
+  margin: 0 30px 50px 30px;
+}
+
+.start-button:hover {
+  background-color: #083a45;
+}
+
+.answer-button {
+  max-height: 100%;
+  min-height: 45px;
+  background-color: #ffffff;
+  padding: 10px;
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.answer-button:hover {
+  background-color: white;
+  color: #0e7289;
+}
+
+.reset-button {
+  color: #ffffff;
+  background-color: #c84030;
+}
+
+.reset-button:hover {
+  background-color: hsl(6, 61%, 30%);
+  color: #ffffff;
+}
+
+.learn-more-button {
+  color: #ffffff;
+  background-color: #0e7289;
+}
+
+.learn-more-button:hover {
+  background-color: #083a45;
+  color: #ffffff;
+}
