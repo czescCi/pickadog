@@ -80,7 +80,6 @@ const questions = [{
             { answerText: 'Only about 4 hours at a time' },
             { answerText: 'Just until I get home from work', oftenAway: true },
             { answerText: 'My dog should be fine by himself for at least 8 hours', 
-            // buyAFish: true, 
             oftenAway: true },
         ],
     },
@@ -89,7 +88,6 @@ const questions = [{
         questionText: 'How much training will your new dog receive?',
         answerOptions: [
             { answerText: 'None', 
-            // buyAFish: true 
         },
             { answerText: 'Basic obedience', wantsToTrain: true },
             { answerText: 'Advanced obedience', wantsToTrain: true },

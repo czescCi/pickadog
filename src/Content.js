@@ -55,16 +55,6 @@ const Content = () => {
       myAnswer.hide = true;
     }
 
-    //   questionToModify.answerOptions = questionToModify.answerOptions.filter(
-    //     (answer) => {
-    //       if (answer.answerText === "Huge - over 50 kg") {
-    //         return false;
-    //       }
-    //       return true;
-    //     }
-    //   );
-    // }
-
     if (answer.buyAFish) {
       setFishAnswer(answer.buyAFish);
     }

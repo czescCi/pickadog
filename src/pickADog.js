@@ -35,13 +35,10 @@ const pickADog = (dogsList, dogsFeaturesList) => {
 
   if (dogsFeaturesList.experienced !== undefined) {
     newDogs = newDogs.filter((dog) => {
-      // jesli experienced jest true to zwracam wszystkie psy
       if (dogsFeaturesList.experienced) {
         return true;
-        // jesli experienced jest false i psy sa easy to train to psa
       } else if (!dogsFeaturesList.experienced && dog.easyToTrain) {
         return true;
-        // jesli experienced jest false i psy nie sa easy to train to nie zwracam nic
       } else if (!dogsFeaturesList.experienced && !dog.easyToTrain) {
         return false;
       }
@@ -52,13 +49,10 @@ const pickADog = (dogsList, dogsFeaturesList) => {
 
   if (dogsFeaturesList.haveOtherPets !== undefined) {
     newDogs = newDogs.filter((dog) => {
-      //jesli have other pets jest true i good with other pets jest true to zwracam psa
       if (dogsFeaturesList.haveOtherPets && dog.goodWithOtherPets) {
         return true;
-        //jesli have other pets jest true, ale pies nie jest good with other pets to nie zwracam psa
       } else if (dogsFeaturesList.haveOtherPets && !dog.goodWithOtherPets) {
         return false;
-        //jesli have other pets jest false to zwracam wszyskie psy
       } else if (!dogsFeaturesList.haveOtherPets) {
         return true;
       }
@@ -118,7 +112,6 @@ const pickADog = (dogsList, dogsFeaturesList) => {
   console.log(dogsFeaturesList);
 
   if (dogsFeaturesList.size === DOGS_SIZE.SMALL) {
-    // jesli rozmiar wybranego psa jest small pokazuje tylko psy z size small
     newDogs = newDogs.filter((dog) => {
       if (dog.size === DOGS_SIZE.SMALL) {
         return true;
